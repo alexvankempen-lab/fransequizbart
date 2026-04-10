@@ -10,135 +10,143 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 #app { max-width: 430px; margin: 0 auto; padding: .75rem; }
 .screen { display: none; }
 .screen.active { display: block; }
-
-/* Barcelona kleuren: donkerblauw #004D98, rood #A50044, goud #EDBB00 */
-.barca-header {
-  background: linear-gradient(135deg, #004D98 60%, #A50044 100%);
-  border-radius: 16px;
-  padding: 0;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  position: relative;
-}
-.barca-header-inner {
-  padding: 1.25rem;
-  position: relative;
-  z-index: 1;
-}
-/* Blaugrana streepjes decoratie */
-.barca-stripes {
-  position: absolute;
-  top: 0; right: 0;
-  width: 80px; height: 100%;
-  display: flex;
-  opacity: .18;
-}
-.barca-stripes span {
-  flex: 1;
-  height: 100%;
-}
-.barca-stripes span:nth-child(odd)  { background: #A50044; }
+.barca-header { background: linear-gradient(135deg, #004D98 60%, #A50044 100%); border-radius: 16px; padding: 0; margin-bottom: 1rem; overflow: hidden; position: relative; }
+.barca-header-inner { padding: 1.25rem; position: relative; z-index: 1; }
+.barca-stripes { position: absolute; top: 0; right: 0; width: 80px; height: 100%; display: flex; opacity: .18; }
+.barca-stripes span { flex: 1; height: 100%; }
+.barca-stripes span:nth-child(odd) { background: #A50044; }
 .barca-stripes span:nth-child(even) { background: #004D98; }
-
-.crest {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  border: 2px solid #EDBB00;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(237,187,0,.12);
-  font-size: 10px; font-weight: 800;
-  color: #EDBB00;
-  flex-shrink: 0;
-}
-
+.crest { width: 56px; height: 56px; border-radius: 50%; border: 2px solid #EDBB00; display: flex; align-items: center; justify-content: center; background: rgba(237,187,0,.12); font-size: 10px; font-weight: 800; color: #EDBB00; flex-shrink: 0; }
 .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 1.25rem; margin-bottom: .875rem; }
-
 .btn { display: block; width: 100%; padding: 14px; border-radius: 12px; border: 1.5px solid #d1d5db; background: #fff; color: #111; font-size: 15px; font-weight: 600; cursor: pointer; text-align: center; margin-bottom: 9px; font-family: inherit; transition: all .12s; }
 .btn:active { transform: scale(.97); }
 .btn-barca { background: #004D98; border-color: #004D98; color: #EDBB00; }
-.btn-barca:hover { background: #003d7a; }
-.btn-rood  { background: #A50044; border-color: #A50044; color: #fff; }
-.btn-rood:hover { background: #8a0038; }
-
+.btn-rood { background: #A50044; border-color: #A50044; color: #fff; }
 .mc-opt { display: block; width: 100%; padding: 13px 16px; border-radius: 10px; border: 2px solid #e5e7eb; background: #fff; color: #111; font-size: 15px; cursor: pointer; text-align: left; margin-bottom: 8px; font-family: inherit; transition: all .12s; }
 .mc-opt:hover:not(:disabled) { border-color: #004D98; background: #eff6ff; }
 .mc-opt.correct { background: #f0fdf4; border-color: #16a34a; color: #14532d; font-weight: 600; }
-.mc-opt.wrong   { background: #fef2f2; border-color: #A50044; color: #7f1d1d; }
-
+.mc-opt.wrong { background: #fef2f2; border-color: #A50044; color: #7f1d1d; }
 .pbar { height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; margin-bottom: 1rem; }
 .pfill { height: 100%; background: linear-gradient(90deg, #004D98, #A50044); border-radius: 4px; transition: width .4s; }
-
 .xpbar { height: 10px; background: rgba(255,255,255,.22); border-radius: 5px; overflow: hidden; }
 .xpfill { height: 100%; background: #EDBB00; border-radius: 5px; transition: width .5s; }
-
 .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
 .badge-barca { background: #004D98; color: #EDBB00; }
-.badge-gray  { background: #f3f4f6; color: #374151; }
-.badge-rood  { background: #A50044; color: #fff; }
-
+.badge-gray { background: #f3f4f6; color: #374151; }
 input[type=text] { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #d1d5db; font-size: 17px; color: #111; background: #fff; text-align: center; font-family: inherit; }
 input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0 3px rgba(0,77,152,.15); }
-
 .cat-btn { padding: 13px 14px; border-radius: 12px; border: 2px solid #e5e7eb; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: 8px; font-family: inherit; transition: border-color .12s; }
 .cat-btn:hover { border-color: #004D98; background: #eff6ff; }
 .mode-btn { padding: 13px 14px; border-radius: 12px; border: 2px solid #e5e7eb; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: 8px; font-family: inherit; transition: border-color .12s; }
 .mode-btn:hover { border-color: #A50044; background: #fff0f5; }
-
 .cat-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-
 .stat-box { background: #f9fafb; border-radius: 10px; padding: 10px; text-align: center; }
-.fb-box { border-radius: 12px; padding: 12px 16px; margin-bottom: .875rem; text-align: center; font-size: 15px; font-weight: 600; }
-.fb-correct { background: #f0fdf4; color: #14532d; border: 1px solid #86efac; }
-.fb-wrong   { background: #fef2f2; color: #7f1d1d; border: 1px solid #fca5a5; }
-.fb-almost  { background: #fffbeb; color: #78350f; border: 1px solid #fcd34d; }
 .wrong-item { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #f3f4f6; font-size: 14px; }
 .wrong-item:last-child { border-bottom: none; }
 .back-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #6b7280; padding: 0 4px; line-height: 1; }
 .section-label { font-size: 11px; color: #9ca3af; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+.result-header { background: linear-gradient(135deg, #004D98 50%, #A50044 100%); border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: .875rem; color: #EDBB00; position: relative; overflow: hidden; }
 
-.barca-banner {
-  border-radius: 12px; padding: 9px 14px; margin-bottom: .75rem;
-  display: flex; align-items: center; gap: 10px;
-  background: linear-gradient(90deg, #004D98, #A50044);
-  color: #EDBB00;
+/* FIFA KAART */
+.fifa-card {
+  background: linear-gradient(160deg, #1a1a2e 0%, #004D98 40%, #A50044 100%);
+  border-radius: 16px;
+  padding: 1rem;
+  margin-bottom: .875rem;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 2px solid #EDBB00;
+  animation: slideIn .35s ease;
 }
-.mini-crest { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #EDBB00; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 800; color: #EDBB00; flex-shrink: 0; }
-
-.level-badge {
-  background: linear-gradient(135deg, #004D98, #A50044);
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-12px) scale(.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.fifa-silhouette {
+  flex-shrink: 0;
+  width: 90px;
+}
+.fifa-info {
+  flex: 1;
+  color: #fff;
+}
+.fifa-rating {
+  font-size: 28px;
+  font-weight: 900;
   color: #EDBB00;
-  border-radius: 10px;
-  padding: 8px 14px;
+  line-height: 1;
+}
+.fifa-pos {
+  font-size: 11px;
+  color: #EDBB00;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.fifa-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.fifa-nat {
+  font-size: 12px;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 6px;
+}
+.fifa-fact {
+  font-size: 11px;
+  color: rgba(255,255,255,.85);
+  line-height: 1.4;
+  background: rgba(255,255,255,.08);
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+.fifa-stats {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+.fifa-stat {
+  text-align: center;
+}
+.fifa-stat-val { font-size: 13px; font-weight: 800; color: #EDBB00; }
+.fifa-stat-lbl { font-size: 9px; color: rgba(255,255,255,.6); }
+
+.goal-flash {
+  text-align: center;
   font-size: 13px;
   font-weight: 700;
-  display: inline-block;
+  color: #16a34a;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 10px;
+  padding: 8px;
   margin-bottom: 8px;
 }
-
-/* Result header */
-.result-header {
-  background: linear-gradient(135deg, #004D98 50%, #A50044 100%);
-  border-radius: 16px;
-  padding: 1.5rem;
+.wrong-flash {
   text-align: center;
-  margin-bottom: .875rem;
-  color: #EDBB00;
-  position: relative;
-  overflow: hidden;
+  font-size: 13px;
+  font-weight: 700;
+  color: #7f1d1d;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 8px;
 }
 </style>
 </head>
 <body>
 <div id="app">
 
-<!-- HOME -->
 <div id="s-home" class="screen active">
   <div class="barca-header">
     <div class="barca-stripes"><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="barca-header-inner">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;">
         <div>
-          <div style="font-size:10px;letter-spacing:1px;opacity:.8;text-transform:uppercase;margin-bottom:2px;color:#EDBB00;">FCB Français Academy</div>
+          <div style="font-size:10px;letter-spacing:1px;opacity:.8;text-transform:uppercase;margin-bottom:2px;color:#EDBB00;">FCB Francais Academy</div>
           <div style="font-size:12px;color:rgba(237,187,0,.8);margin-bottom:6px;" id="h-levelname">Pupil</div>
           <div style="display:flex;align-items:baseline;gap:6px;">
             <span style="font-size:30px;font-weight:800;color:#EDBB00;" id="h-xp">0</span>
@@ -153,8 +161,6 @@ input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0
       </div>
     </div>
   </div>
-
-  <!-- Barca mini info -->
   <div style="display:flex;gap:8px;margin-bottom:1rem;">
     <div style="flex:1;background:#004D98;border-radius:12px;padding:10px;text-align:center;">
       <div style="font-size:10px;color:rgba(237,187,0,.7);text-transform:uppercase;letter-spacing:.5px;">Stadion</div>
@@ -169,13 +175,11 @@ input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0
       <div style="font-size:12px;color:#111;font-weight:700;margin-top:2px;">1899</div>
     </div>
   </div>
-
   <div class="section-label">Kies een thema</div>
   <div id="cat-list"></div>
   <button class="btn" id="btn-mix">🔀 Alles door elkaar</button>
 </div>
 
-<!-- MODE -->
 <div id="s-mode" class="screen">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
     <button class="back-btn" id="btn-back-mode">&#8592;</button>
@@ -187,7 +191,6 @@ input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0
   <div id="mode-list"></div>
 </div>
 
-<!-- QUIZ -->
 <div id="s-quiz" class="screen">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
     <button class="back-btn" id="btn-back-quiz">&#8592;</button>
@@ -195,17 +198,10 @@ input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0
     <span class="badge badge-barca" id="q-score-badge">0 pt</span>
   </div>
   <div class="pbar"><div class="pfill" id="q-pbar"></div></div>
-
-  <div class="barca-banner" id="q-banner">
-    <div class="mini-crest">FCB</div>
-    <div style="font-size:13px;font-weight:700;">Speel voor FC Barcelona!</div>
-  </div>
-
   <div class="card" style="text-align:center;margin-bottom:1rem;">
     <div style="font-size:12px;color:#9ca3af;margin-bottom:8px;" id="q-direction"></div>
     <div style="font-size:22px;font-weight:700;color:#111;line-height:1.3;" id="q-word"></div>
   </div>
-
   <div id="q-mc-area"></div>
   <div id="q-type-area" style="display:none;">
     <input type="text" id="q-input" placeholder="typ het Franse woord..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
@@ -217,9 +213,8 @@ input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0
   <button id="q-next-btn" class="btn btn-barca" style="display:none;">Volgende →</button>
 </div>
 
-<!-- RESULTAAT -->
 <div id="s-result" class="screen">
-  <div class="result-header" id="r-header">
+  <div class="result-header">
     <div style="font-size:44px;margin-bottom:8px;" id="r-trophy"></div>
     <div style="font-size:22px;font-weight:800;" id="r-title"></div>
     <div style="font-size:13px;opacity:.8;margin-top:4px;" id="r-sub"></div>
@@ -227,18 +222,9 @@ input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0
   </div>
   <div class="card" style="margin-bottom:.875rem;">
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-      <div class="stat-box">
-        <div style="font-size:11px;color:#6b7280;margin-bottom:2px;">Goed</div>
-        <div style="font-size:26px;font-weight:700;color:#16a34a;" id="r-good"></div>
-      </div>
-      <div class="stat-box">
-        <div style="font-size:11px;color:#6b7280;margin-bottom:2px;">Fout</div>
-        <div style="font-size:26px;font-weight:700;color:#A50044;" id="r-wrong"></div>
-      </div>
-      <div class="stat-box">
-        <div style="font-size:11px;color:#6b7280;margin-bottom:2px;">XP</div>
-        <div style="font-size:26px;font-weight:700;color:#004D98;" id="r-xp"></div>
-      </div>
+      <div class="stat-box"><div style="font-size:11px;color:#6b7280;margin-bottom:2px;">Goed</div><div style="font-size:26px;font-weight:700;color:#16a34a;" id="r-good"></div></div>
+      <div class="stat-box"><div style="font-size:11px;color:#6b7280;margin-bottom:2px;">Fout</div><div style="font-size:26px;font-weight:700;color:#A50044;" id="r-wrong"></div></div>
+      <div class="stat-box"><div style="font-size:11px;color:#6b7280;margin-bottom:2px;">XP</div><div style="font-size:26px;font-weight:700;color:#004D98;" id="r-xp"></div></div>
     </div>
   </div>
   <div id="r-wrong-list" class="card" style="margin-bottom:.875rem;display:none;"></div>
@@ -248,6 +234,96 @@ input[type=text]:focus { outline: none; border-color: #004D98; box-shadow: 0 0 0
 
 </div>
 <script>
+// ── SPELERS ──────────────────────────────────────────────────────────────────
+var PLAYERS = [
+  {
+    name: 'Lionel Messi', pos: 'AAV', nat: 'Argentinie', rating: 99, era: '2004-2021',
+    stats: [{v:'672',l:'Goals'},{v:'305',l:'Assists'},{v:'8',l:'Ballons'}],
+    fact: 'Scoorde 91 goals in 2012 — een wereldrecord dat nog steeds staat.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#A50044"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#004D98"/><circle cx="45" cy="30" r="16" fill="#f4c09a"/><ellipse cx="45" cy="26" rx="14" ry="10" fill="#3d1a00"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#f4c09a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#f4c09a"/><rect x="29" y="35" width="6" height="22" rx="3" fill="#f4c09a"/><rect x="55" y="35" width="6" height="22" rx="3" fill="#f4c09a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">10</text><circle cx="58" cy="100" r="7" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/><path d="M55 100 l3-5 l3 5 l-3 2z" fill="#111" opacity=".3"/></svg>'
+  },
+  {
+    name: 'Ronaldinho', pos: 'AAV', nat: 'Brazilie', rating: 98, era: '2003-2008',
+    stats: [{v:'94',l:'Goals'},{v:'76',l:'Assists'},{v:'1',l:'Ballon'}],
+    fact: 'Won de Ballon d\'Or in 2005. Zijn vrije trappen waren legendarisch.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#A50044"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#004D98"/><circle cx="45" cy="30" r="16" fill="#7a4a1a"/><ellipse cx="45" cy="24" rx="15" ry="8" fill="#2a1500"/><path d="M38 24 Q45 32 52 24" stroke="#2a1500" stroke-width="3" fill="none"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#7a4a1a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#7a4a1a"/><rect x="29" y="35" width="6" height="22" rx="3" fill="#7a4a1a"/><rect x="55" y="35" width="6" height="22" rx="3" fill="#7a4a1a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">10</text></svg>'
+  },
+  {
+    name: 'Xavi Hernandez', pos: 'MID', nat: 'Spanje', rating: 96, era: '1998-2015',
+    stats: [{v:'767',l:'Wedstrijden'},{v:'85',l:'Goals'},{v:'4',l:'CL titels'}],
+    fact: 'Speelde 767 wedstrijden voor Barca. Nu de hoofdtrainer.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#004D98"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#A50044"/><circle cx="45" cy="30" r="15" fill="#e8c49a"/><ellipse cx="45" cy="24" rx="13" ry="8" fill="#5a3010"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#e8c49a"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#e8c49a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">6</text></svg>'
+  },
+  {
+    name: 'Andres Iniesta', pos: 'MID', nat: 'Spanje', rating: 95, era: '2002-2018',
+    stats: [{v:'442',l:'Goals+Ass'},{v:'9',l:'La Liga'},{v:'4',l:'CL titels'}],
+    fact: 'Scoorde het WK-winnende doelpunt voor Spanje in 2010.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#A50044"/><rect x="45" y="55" width="20" height="50" rx="2" fill="#004D98"/><circle cx="45" cy="30" r="15" fill="#e8c49a"/><ellipse cx="45" cy="23" rx="12" ry="7" fill="#3a1a00"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#e8c49a"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#e8c49a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">8</text></svg>'
+  },
+  {
+    name: 'Samuel Etoo', pos: 'SPT', nat: 'Kameroen', rating: 94, era: '2004-2009',
+    stats: [{v:'108',l:'Goals'},{v:'2',l:'CL titels'},{v:'3',l:'La Liga'}],
+    fact: 'Scoorde in twee Champions League finales voor Barcelona.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#004D98"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#A50044"/><circle cx="45" cy="30" r="15" fill="#5a3010"/><ellipse cx="45" cy="24" rx="13" ry="8" fill="#1a0800"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#5a3010"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#5a3010"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#5a3010"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#5a3010"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">9</text></svg>'
+  },
+  {
+    name: 'Lamine Yamal', pos: 'AAV', nat: 'Spanje', rating: 91, era: '2023-heden',
+    stats: [{v:'16',l:'Leeftijd'},{v:'7',l:'Goals 24/25'},{v:'1',l:'EK titel'}],
+    fact: 'Jongste ooit bij Barca. Won het EK 2024 als 17-jarige met Spanje.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#A50044"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#004D98"/><circle cx="45" cy="30" r="14" fill="#c8925a"/><ellipse cx="45" cy="24" rx="12" ry="7" fill="#2a1200"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#c8925a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#c8925a"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#c8925a"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#c8925a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">27</text></svg>'
+  },
+  {
+    name: 'Robert Lewandowski', pos: 'SPT', nat: 'Polen', rating: 92, era: '2022-heden',
+    stats: [{v:'82',l:'Barca goals'},{v:'600+',l:'Carriere'},{v:'1',l:'Gouden schoen'}],
+    fact: 'Scoorde 38 La Liga goals in zijn eerste seizoen bij Barca.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#004D98"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#A50044"/><circle cx="45" cy="30" r="15" fill="#f0d0a0"/><ellipse cx="45" cy="23" rx="13" ry="7" fill="#c8a060"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#f0d0a0"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#f0d0a0"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#f0d0a0"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#f0d0a0"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">9</text></svg>'
+  },
+  {
+    name: 'Pedri', pos: 'MID', nat: 'Spanje', rating: 90, era: '2020-heden',
+    stats: [{v:'22',l:'Leeftijd'},{v:'30+',l:'Goals'},{v:'1',l:'Golden Boy'}],
+    fact: 'Won de Golden Boy award in 2021. Vergeleken met Xavi en Iniesta.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#A50044"/><rect x="45" y="55" width="20" height="50" rx="2" fill="#004D98"/><circle cx="45" cy="30" r="14" fill="#e8c49a"/><ellipse cx="45" cy="24" rx="12" ry="7" fill="#6b3a1a"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#e8c49a"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#e8c49a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">8</text></svg>'
+  },
+  {
+    name: 'Dani Alves', pos: 'RVB', nat: 'Brazilie', rating: 93, era: '2008-2016',
+    stats: [{v:'23',l:'Prijzen'},{v:'95',l:'Assists'},{v:'3',l:'CL titels'}],
+    fact: 'Meest bekroonde voetballer aller tijden met 23 gewonnen prijzen.',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#004D98"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#A50044"/><circle cx="45" cy="30" r="15" fill="#8a5a20"/><ellipse cx="45" cy="23" rx="13" ry="8" fill="#3a1800"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#8a5a20"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#8a5a20"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#8a5a20"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#8a5a20"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">2</text></svg>'
+  },
+  {
+    name: 'Gavi', pos: 'MID', nat: 'Spanje', rating: 89, era: '2021-heden',
+    stats: [{v:'20',l:'Leeftijd'},{v:'150+',l:'Wedstrijden'},{v:'1',l:'Golden Boy'}],
+    fact: 'Jongste speler die scoorde voor Spanje op een EK (2021).',
+    svg: '<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#A50044"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#004D98"/><circle cx="45" cy="30" r="14" fill="#f0c898"/><ellipse cx="45" cy="24" rx="11" ry="6" fill="#5a3010"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#004D98"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#A50044"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#f0c898"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#f0c898"/><rect x="29" y="36" width="6" height="21" rx="3" fill="#f0c898"/><rect x="55" y="36" width="6" height="21" rx="3" fill="#f0c898"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#EDBB00">6</text></svg>'
+  },
+];
+
+var usedPlayers = [];
+function getPlayer() {
+  if (usedPlayers.length >= PLAYERS.length) usedPlayers = [];
+  var available = PLAYERS.filter(function(p){ return usedPlayers.indexOf(p.name) === -1; });
+  var p = available[Math.floor(Math.random() * available.length)];
+  usedPlayers.push(p.name);
+  return p;
+}
+
+function renderFifaCard(p) {
+  return '<div class="fifa-card">' +
+    '<div class="fifa-silhouette">' + p.svg + '</div>' +
+    '<div class="fifa-info">' +
+      '<div class="fifa-rating">' + p.rating + '</div>' +
+      '<div class="fifa-pos">' + p.pos + ' &nbsp;|&nbsp; ' + p.era + '</div>' +
+      '<div class="fifa-name">' + p.name + '</div>' +
+      '<div class="fifa-nat">' + p.nat + '</div>' +
+      '<div class="fifa-stats">' +
+        p.stats.map(function(s){ return '<div class="fifa-stat"><div class="fifa-stat-val">'+s.v+'</div><div class="fifa-stat-lbl">'+s.l+'</div></div>'; }).join('') +
+      '</div>' +
+      '<div class="fifa-fact">' + p.fact + '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+// ── CATEGORIES ───────────────────────────────────────────────────────────────
 var CATS = [
   {id:'weg', label:'De weg vragen', icon:'🗺️', color:'#eff6ff', words:[
     {fr:'vous allez', nl:'u gaat, jullie gaan'},
@@ -324,273 +400,217 @@ var LEVELS = [
   {n:'Aanvoerder',xp:500},{n:'Topscorer',xp:800},{n:'Barca-Ster',xp:1200}
 ];
 
-var xp = 0;
-var pendingWords = null;
-var currentWords = [];
-var qIndex = 0, qScore = 0, qWrong = [], qMode = '';
-var lastWords = [], lastMode = '';
+var xp=0, pendingWords=null, currentWords=[], qIndex=0, qScore=0, qWrong=[], qMode='', lastWords=[], lastMode='';
 
-function getLvl(x) {
-  var l = 0;
-  for (var i = 0; i < LEVELS.length; i++) { if (x >= LEVELS[i].xp) l = i; }
-  return l;
-}
+function getLvl(x){ var l=0; for(var i=0;i<LEVELS.length;i++){if(x>=LEVELS[i].xp)l=i;} return l; }
 
-function updateHUD() {
-  var lvl = getLvl(xp);
-  document.getElementById('h-levelname').textContent = LEVELS[lvl].n;
-  document.getElementById('h-xp').textContent = xp;
-  document.getElementById('h-crest').textContent = 'LVL ' + (lvl + 1);
-  var next = LEVELS[Math.min(lvl+1, LEVELS.length-1)].xp;
-  var prev = LEVELS[lvl].xp;
-  var pct = lvl >= LEVELS.length-1 ? 100 : Math.round(((xp-prev)/(next-prev))*100);
-  document.getElementById('h-xp-label').textContent = 'Naar niveau '+(lvl+2)+': '+(xp-prev)+' / '+(next-prev)+' XP';
-  document.getElementById('h-xpbar').style.width = pct + '%';
+function updateHUD(){
+  var lvl=getLvl(xp);
+  document.getElementById('h-levelname').textContent=LEVELS[lvl].n;
+  document.getElementById('h-xp').textContent=xp;
+  document.getElementById('h-crest').textContent='LVL '+(lvl+1);
+  var next=LEVELS[Math.min(lvl+1,LEVELS.length-1)].xp, prev=LEVELS[lvl].xp;
+  var pct=lvl>=LEVELS.length-1?100:Math.round(((xp-prev)/(next-prev))*100);
+  document.getElementById('h-xp-label').textContent='Naar niveau '+(lvl+2)+': '+(xp-prev)+' / '+(next-prev)+' XP';
+  document.getElementById('h-xpbar').style.width=pct+'%';
   renderCats();
 }
 
-function renderCats() {
-  var h = '';
-  for (var i = 0; i < CATS.length; i++) {
-    var c = CATS[i];
-    h += '<button class="cat-btn" data-catidx="'+i+'">' +
+function renderCats(){
+  var h='';
+  for(var i=0;i<CATS.length;i++){
+    var c=CATS[i];
+    h+='<button class="cat-btn" data-catidx="'+i+'">' +
       '<div class="cat-icon" style="background:'+c.color+';">'+c.icon+'</div>' +
-      '<div style="flex:1;text-align:left;">' +
-        '<div style="font-size:15px;font-weight:700;color:#111;">'+c.label+'</div>' +
-        '<div style="font-size:12px;color:#6b7280;">'+c.words.length+' woorden</div>' +
-      '</div>' +
+      '<div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+c.label+'</div><div style="font-size:12px;color:#6b7280;">'+c.words.length+' woorden</div></div>' +
       '<span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';
   }
-  document.getElementById('cat-list').innerHTML = h;
-  var btns = document.querySelectorAll('.cat-btn');
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', function() {
-      selectCat(parseInt(this.getAttribute('data-catidx')));
-    });
+  document.getElementById('cat-list').innerHTML=h;
+  var btns=document.querySelectorAll('.cat-btn');
+  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click',function(){ selectCat(parseInt(this.getAttribute('data-catidx'))); });
   }
 }
 
-function selectCat(idx) {
-  pendingWords = CATS[idx].words;
-  document.getElementById('mode-title').textContent = CATS[idx].label;
-  document.getElementById('mode-sub').textContent = CATS[idx].words.length + ' woorden';
-  renderModeList();
-  goTo('s-mode');
+function selectCat(idx){
+  pendingWords=CATS[idx].words;
+  document.getElementById('mode-title').textContent=CATS[idx].label;
+  document.getElementById('mode-sub').textContent=CATS[idx].words.length+' woorden';
+  renderModeList(); goTo('s-mode');
 }
 
-function renderModeList() {
-  var modes = [
-    {key:'mc-fr2nl', icon:'🇫🇷', label:'Frans naar Nederlands', desc:'Meerkeuze — kies de vertaling'},
-    {key:'mc-nl2fr', icon:'🇳🇱', label:'Nederlands naar Frans',  desc:'Meerkeuze — kies het Franse woord'},
-    {key:'type-nl2fr',icon:'✏️', label:'Typ het Frans',          desc:'Schrijfoefening — type zelf het woord'}
+function renderModeList(){
+  var modes=[
+    {key:'mc-fr2nl',icon:'🇫🇷',label:'Frans naar Nederlands',desc:'Meerkeuze — kies de vertaling'},
+    {key:'mc-nl2fr',icon:'🇳🇱',label:'Nederlands naar Frans',desc:'Meerkeuze — kies het Franse woord'},
+    {key:'type-nl2fr',icon:'✏️',label:'Typ het Frans',desc:'Schrijfoefening — type zelf het woord'}
   ];
-  var h = '';
-  for (var i = 0; i < modes.length; i++) {
-    h += '<button class="mode-btn" data-mode="'+modes[i].key+'">' +
+  var h='';
+  for(var i=0;i<modes.length;i++){
+    h+='<button class="mode-btn" data-mode="'+modes[i].key+'">' +
       '<span style="font-size:22px;">'+modes[i].icon+'</span>' +
-      '<div style="flex:1;text-align:left;">' +
-        '<div style="font-size:15px;font-weight:700;color:#111;">'+modes[i].label+'</div>' +
-        '<div style="font-size:12px;color:#6b7280;">'+modes[i].desc+'</div>' +
-      '</div>' +
+      '<div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+modes[i].label+'</div><div style="font-size:12px;color:#6b7280;">'+modes[i].desc+'</div></div>' +
       '<span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';
   }
-  document.getElementById('mode-list').innerHTML = h;
-  var btns = document.querySelectorAll('.mode-btn');
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', function() {
-      startQuiz(this.getAttribute('data-mode'));
-    });
+  document.getElementById('mode-list').innerHTML=h;
+  var btns=document.querySelectorAll('.mode-btn');
+  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click',function(){ startQuiz(this.getAttribute('data-mode')); });
   }
 }
 
-function goTo(id) {
-  var ss = document.querySelectorAll('.screen');
-  for (var i = 0; i < ss.length; i++) ss[i].classList.remove('active');
+function goTo(id){
+  var ss=document.querySelectorAll('.screen');
+  for(var i=0;i<ss.length;i++) ss[i].classList.remove('active');
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
-  if (id === 's-home') updateHUD();
+  window.scrollTo(0,0);
+  if(id==='s-home') updateHUD();
 }
 
-function shuffle(a) {
-  var arr = a.slice();
-  for (var i = arr.length-1; i > 0; i--) {
-    var j = Math.floor(Math.random()*(i+1));
-    var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
-  }
-  return arr;
+function shuffle(a){ var arr=a.slice(); for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;} return arr; }
+
+function startQuiz(mode){
+  lastWords=pendingWords; lastMode=mode;
+  currentWords=shuffle(pendingWords).slice(0,Math.min(pendingWords.length,15));
+  qIndex=0; qScore=0; qWrong=[]; qMode=mode;
+  goTo('s-quiz'); loadQ();
 }
 
-function startQuiz(mode) {
-  lastWords = pendingWords;
-  lastMode = mode;
-  currentWords = shuffle(pendingWords).slice(0, Math.min(pendingWords.length, 15));
-  qIndex = 0; qScore = 0; qWrong = []; qMode = mode;
-  goTo('s-quiz');
-  loadQ();
-}
+function loadQ(){
+  var total=currentWords.length;
+  document.getElementById('q-counter').textContent=(qIndex+1)+' / '+total;
+  document.getElementById('q-pbar').style.width=Math.round((qIndex/total)*100)+'%';
+  document.getElementById('q-score-badge').textContent=qScore+' pt';
+  document.getElementById('q-fb').innerHTML='';
+  document.getElementById('q-next-btn').style.display='none';
 
-function loadQ() {
-  var total = currentWords.length;
-  document.getElementById('q-counter').textContent = (qIndex+1)+' / '+total;
-  document.getElementById('q-pbar').style.width = Math.round((qIndex/total)*100)+'%';
-  document.getElementById('q-score-badge').textContent = qScore+' pt';
-  document.getElementById('q-fb').innerHTML = '';
-  document.getElementById('q-next-btn').style.display = 'none';
+  var w=currentWords[qIndex], isType=(qMode==='type-nl2fr'), isFr2nl=(qMode==='mc-fr2nl');
 
-  var w = currentWords[qIndex];
-  var isType = (qMode === 'type-nl2fr');
-  var isFr2nl = (qMode === 'mc-fr2nl');
-
-  if (isType) {
-    document.getElementById('q-direction').textContent = 'Hoe zeg je dit in het Frans?';
-    document.getElementById('q-word').textContent = w.nl;
-    document.getElementById('q-mc-area').style.display = 'none';
-    document.getElementById('q-type-area').style.display = 'block';
-    document.getElementById('q-input').value = '';
-    document.getElementById('q-input').disabled = false;
-    document.getElementById('q-type-fb').textContent = '';
-    document.getElementById('q-type-fb').style.color = '#111';
-    document.getElementById('q-type-next').style.display = 'none';
-    document.getElementById('q-check-btn').style.display = 'block';
-    setTimeout(function(){ document.getElementById('q-input').focus(); }, 80);
+  if(isType){
+    document.getElementById('q-direction').textContent='Hoe zeg je dit in het Frans?';
+    document.getElementById('q-word').textContent=w.nl;
+    document.getElementById('q-mc-area').style.display='none';
+    document.getElementById('q-type-area').style.display='block';
+    document.getElementById('q-input').value='';
+    document.getElementById('q-input').disabled=false;
+    document.getElementById('q-type-fb').textContent='';
+    document.getElementById('q-type-next').style.display='none';
+    document.getElementById('q-check-btn').style.display='block';
+    setTimeout(function(){ document.getElementById('q-input').focus(); },80);
   } else {
-    document.getElementById('q-direction').textContent = isFr2nl ? 'Wat betekent dit?' : 'Hoe zeg je dit in het Frans?';
-    document.getElementById('q-word').textContent = isFr2nl ? w.fr : w.nl;
-    document.getElementById('q-type-area').style.display = 'none';
-    document.getElementById('q-mc-area').style.display = 'block';
-
-    var allW = [];
-    for (var i = 0; i < CATS.length; i++) allW = allW.concat(CATS[i].words);
-    var correctVal = isFr2nl ? w.nl : w.fr;
-    var pool = [];
-    for (var i = 0; i < allW.length; i++) {
-      var v = isFr2nl ? allW[i].nl : allW[i].fr;
-      if (v !== correctVal) pool.push(allW[i]);
+    document.getElementById('q-direction').textContent=isFr2nl?'Wat betekent dit?':'Hoe zeg je dit in het Frans?';
+    document.getElementById('q-word').textContent=isFr2nl?w.fr:w.nl;
+    document.getElementById('q-type-area').style.display='none';
+    document.getElementById('q-mc-area').style.display='block';
+    var allW=[]; for(var i=0;i<CATS.length;i++) allW=allW.concat(CATS[i].words);
+    var correctVal=isFr2nl?w.nl:w.fr, pool=[];
+    for(var i=0;i<allW.length;i++){ var v=isFr2nl?allW[i].nl:allW[i].fr; if(v!==correctVal) pool.push(allW[i]); }
+    var opts=shuffle([w].concat(shuffle(pool).slice(0,3)));
+    var h='';
+    for(var i=0;i<opts.length;i++){
+      var lbl=isFr2nl?opts[i].nl:opts[i].fr, isC=(lbl===correctVal);
+      h+='<button class="mc-opt" data-correct="'+(isC?'1':'0')+'" data-correctval="'+correctVal.replace(/"/g,'&quot;').replace(/'/g,'&#39;')+'">'+lbl+'</button>';
     }
-    var opts = shuffle([w].concat(shuffle(pool).slice(0,3)));
-    var h = '';
-    for (var i = 0; i < opts.length; i++) {
-      var lbl = isFr2nl ? opts[i].nl : opts[i].fr;
-      var isC = (lbl === correctVal);
-      h += '<button class="mc-opt" data-correct="'+(isC?'1':'0')+'" data-correctval="'+correctVal.replace(/"/g,'&quot;').replace(/'/g,'&#39;')+'">'+lbl+'</button>';
-    }
-    document.getElementById('q-mc-area').innerHTML = h;
-    var btns = document.querySelectorAll('.mc-opt');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click', function(){ checkMC(this); });
-    }
+    document.getElementById('q-mc-area').innerHTML=h;
+    var btns=document.querySelectorAll('.mc-opt');
+    for(var i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){ checkMC(this); });
   }
 }
 
-function checkMC(btn) {
-  var isCorrect = btn.getAttribute('data-correct') === '1';
-  var correctVal = btn.getAttribute('data-correctval');
-  var btns = document.querySelectorAll('.mc-opt');
-  for (var i = 0; i < btns.length; i++) btns[i].disabled = true;
-  var fb = document.getElementById('q-fb');
-  if (isCorrect) {
-    btn.classList.add('correct');
-    fb.innerHTML = '<div class="fb-box fb-correct">⚽ Goal! Goed antwoord!</div>';
-    qScore++;
+function checkMC(btn){
+  var isCorrect=btn.getAttribute('data-correct')==='1', correctVal=btn.getAttribute('data-correctval');
+  var btns=document.querySelectorAll('.mc-opt');
+  for(var i=0;i<btns.length;i++) btns[i].disabled=true;
+  var fb=document.getElementById('q-fb');
+  if(isCorrect){
+    btn.classList.add('correct'); qScore++;
+    var p=getPlayer();
+    fb.innerHTML='<div class="goal-flash">⚽ Goal! Goed antwoord! Speler van de wedstrijd:</div>'+renderFifaCard(p);
   } else {
     btn.classList.add('wrong');
-    for (var i = 0; i < btns.length; i++) {
-      if (btns[i].getAttribute('data-correct') === '1') btns[i].classList.add('correct');
-    }
-    fb.innerHTML = '<div class="fb-box fb-wrong">❌ Het goede antwoord: <strong>'+correctVal+'</strong></div>';
+    for(var i=0;i<btns.length;i++){ if(btns[i].getAttribute('data-correct')==='1') btns[i].classList.add('correct'); }
+    fb.innerHTML='<div class="wrong-flash">❌ Fout. Het goede antwoord: <strong>'+correctVal+'</strong></div>';
     qWrong.push(currentWords[qIndex]);
   }
-  document.getElementById('q-next-btn').style.display = 'block';
+  document.getElementById('q-next-btn').style.display='block';
 }
 
-function checkType() {
-  var val = document.getElementById('q-input').value.trim().toLowerCase();
-  if (!val) return;
-  var correct = currentWords[qIndex].fr.toLowerCase();
-  document.getElementById('q-input').disabled = true;
-  var fb = document.getElementById('q-type-fb');
-  if (val === correct) {
-    fb.textContent = '⚽ Perfect Frans!'; fb.style.color = '#166534'; qScore++;
-  } else if (lev(val, correct) <= 1) {
-    fb.textContent = 'Bijna! Het is: '+currentWords[qIndex].fr; fb.style.color = '#92400e';
+function checkType(){
+  var val=document.getElementById('q-input').value.trim().toLowerCase();
+  if(!val) return;
+  var correct=currentWords[qIndex].fr.toLowerCase();
+  document.getElementById('q-input').disabled=true;
+  var fb2=document.getElementById('q-type-fb');
+  if(val===correct){
+    fb2.textContent=''; qScore++;
+    var p=getPlayer();
+    document.getElementById('q-fb').innerHTML='<div class="goal-flash">⚽ Perfect Frans! Speler van de wedstrijd:</div>'+renderFifaCard(p);
+  } else if(lev(val,correct)<=1){
+    fb2.textContent='Bijna! Het is: '+currentWords[qIndex].fr; fb2.style.color='#92400e';
+    document.getElementById('q-fb').innerHTML='';
     qWrong.push(currentWords[qIndex]);
   } else {
-    fb.textContent = 'Fout. Het is: '+currentWords[qIndex].fr; fb.style.color = '#A50044';
+    fb2.textContent='Fout. Het is: '+currentWords[qIndex].fr; fb2.style.color='#A50044';
+    document.getElementById('q-fb').innerHTML='';
     qWrong.push(currentWords[qIndex]);
   }
-  document.getElementById('q-check-btn').style.display = 'none';
-  document.getElementById('q-type-next').style.display = 'block';
+  document.getElementById('q-check-btn').style.display='none';
+  document.getElementById('q-type-next').style.display='block';
 }
 
-function lev(a,b) {
+function lev(a,b){
   var m=a.length,n=b.length,d=[];
-  for (var i=0;i<=m;i++){d[i]=[];d[i][0]=i;}
-  for (var j=0;j<=n;j++) d[0][j]=j;
-  for (var i=1;i<=m;i++) for (var j=1;j<=n;j++)
+  for(var i=0;i<=m;i++){d[i]=[];d[i][0]=i;}
+  for(var j=0;j<=n;j++) d[0][j]=j;
+  for(var i=1;i<=m;i++) for(var j=1;j<=n;j++)
     d[i][j]=a[i-1]===b[j-1]?d[i-1][j-1]:1+Math.min(d[i-1][j],d[i][j-1],d[i-1][j-1]);
   return d[m][n];
 }
 
-function nextQ() {
-  qIndex++;
-  if (qIndex >= currentWords.length) { showResult(); return; }
-  loadQ();
-}
+function nextQ(){ qIndex++; if(qIndex>=currentWords.length){showResult();return;} loadQ(); }
 
-function showResult() {
-  var total = currentWords.length;
-  var pct = Math.round((qScore/total)*100);
-  var earned = qScore*10 + (pct>=80?50:pct>=60?20:0);
-  xp += earned;
-  var trophy = pct>=80 ? '🏆' : pct>=60 ? '⭐' : '💪';
-  var title = pct>=80 ? 'Visca el Barça!' : pct>=60 ? 'Goed gespeeld!' : 'Blijven trainen!';
-  document.getElementById('r-trophy').textContent = trophy;
-  document.getElementById('r-title').textContent = title;
-  document.getElementById('r-sub').textContent = qScore+' van de '+total+' goed ('+pct+'%)';
-  document.getElementById('r-xp-earned').textContent = '+'+earned+' XP verdiend!';
-  document.getElementById('r-good').textContent = qScore;
-  document.getElementById('r-wrong').textContent = total-qScore;
-  document.getElementById('r-xp').textContent = earned;
-  var wl = document.getElementById('r-wrong-list');
-  if (qWrong.length > 0) {
-    wl.style.display = 'block';
-    var wh = '<div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:8px;">📚 Nog leren:</div>';
-    for (var i=0;i<qWrong.length;i++)
-      wh += '<div class="wrong-item"><span style="color:#004D98;font-weight:600;">'+qWrong[i].fr+'</span><span style="color:#6b7280;">'+qWrong[i].nl+'</span></div>';
-    wl.innerHTML = wh;
-  } else { wl.style.display = 'none'; }
+function showResult(){
+  var total=currentWords.length, pct=Math.round((qScore/total)*100);
+  var earned=qScore*10+(pct>=80?50:pct>=60?20:0);
+  xp+=earned;
+  document.getElementById('r-trophy').textContent=pct>=80?'🏆':pct>=60?'⭐':'💪';
+  document.getElementById('r-title').textContent=pct>=80?'Visca el Barca!':pct>=60?'Goed gespeeld!':'Blijven trainen!';
+  document.getElementById('r-sub').textContent=qScore+' van de '+total+' goed ('+pct+'%)';
+  document.getElementById('r-xp-earned').textContent='+'+earned+' XP verdiend!';
+  document.getElementById('r-good').textContent=qScore;
+  document.getElementById('r-wrong').textContent=total-qScore;
+  document.getElementById('r-xp').textContent=earned;
+  var wl=document.getElementById('r-wrong-list');
+  if(qWrong.length>0){
+    wl.style.display='block';
+    var wh='<div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:8px;">📚 Nog leren:</div>';
+    for(var i=0;i<qWrong.length;i++)
+      wh+='<div class="wrong-item"><span style="color:#004D98;font-weight:600;">'+qWrong[i].fr+'</span><span style="color:#6b7280;">'+qWrong[i].nl+'</span></div>';
+    wl.innerHTML=wh;
+  } else { wl.style.display='none'; }
   goTo('s-result');
 }
 
-// Event listeners
-document.getElementById('btn-mix').addEventListener('click', function() {
-  var all = [];
-  for (var i = 0; i < CATS.length; i++) all = all.concat(CATS[i].words);
-  pendingWords = all;
-  document.getElementById('mode-title').textContent = 'Alles door elkaar';
-  document.getElementById('mode-sub').textContent = all.length + ' woorden';
-  renderModeList();
-  goTo('s-mode');
+document.getElementById('btn-mix').addEventListener('click',function(){
+  var all=[]; for(var i=0;i<CATS.length;i++) all=all.concat(CATS[i].words);
+  pendingWords=all;
+  document.getElementById('mode-title').textContent='Alles door elkaar';
+  document.getElementById('mode-sub').textContent=all.length+' woorden';
+  renderModeList(); goTo('s-mode');
 });
-document.getElementById('btn-back-mode').addEventListener('click', function(){ goTo('s-home'); });
-document.getElementById('btn-back-quiz').addEventListener('click', function(){ goTo('s-home'); });
-document.getElementById('q-next-btn').addEventListener('click', nextQ);
-document.getElementById('q-check-btn').addEventListener('click', checkType);
-document.getElementById('q-type-next').addEventListener('click', nextQ);
-document.getElementById('btn-replay').addEventListener('click', function(){
-  pendingWords = lastWords; startQuiz(lastMode);
-});
-document.getElementById('btn-home-result').addEventListener('click', function(){ goTo('s-home'); });
-
-document.addEventListener('keydown', function(e) {
-  if (e.key !== 'Enter') return;
-  if (!document.getElementById('s-quiz').classList.contains('active')) return;
-  var cb = document.getElementById('q-check-btn');
-  var tn = document.getElementById('q-type-next');
-  var nb = document.getElementById('q-next-btn');
-  if (cb && cb.style.display !== 'none') checkType();
-  else if (tn && tn.style.display !== 'none') nextQ();
-  else if (nb && nb.style.display !== 'none') nextQ();
+document.getElementById('btn-back-mode').addEventListener('click',function(){ goTo('s-home'); });
+document.getElementById('btn-back-quiz').addEventListener('click',function(){ goTo('s-home'); });
+document.getElementById('q-next-btn').addEventListener('click',nextQ);
+document.getElementById('q-check-btn').addEventListener('click',checkType);
+document.getElementById('q-type-next').addEventListener('click',nextQ);
+document.getElementById('btn-replay').addEventListener('click',function(){ pendingWords=lastWords; startQuiz(lastMode); });
+document.getElementById('btn-home-result').addEventListener('click',function(){ goTo('s-home'); });
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Enter'||!document.getElementById('s-quiz').classList.contains('active')) return;
+  var cb=document.getElementById('q-check-btn'), tn=document.getElementById('q-type-next'), nb=document.getElementById('q-next-btn');
+  if(cb&&cb.style.display!=='none') checkType();
+  else if(tn&&tn.style.display!=='none') nextQ();
+  else if(nb&&nb.style.display!=='none') nextQ();
 });
 
 updateHUD();
