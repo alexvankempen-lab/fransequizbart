@@ -14,20 +14,23 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .lfc-header {
   background: #C8102E;
   border-radius: 16px;
-  padding: 0;
   margin-bottom: 1rem;
   overflow: hidden;
   position: relative;
 }
-.lfc-header-inner { padding: 1.1rem 1.25rem 1.25rem; position: relative; z-index: 2; }
 
-/* Liverpool SVG logo rechtsboven */
-.lfc-logo-corner {
-  position: absolute; top: 10px; right: 10px; z-index: 3; opacity: .95;
+/* Bovenste balk met beide logo's */
+.lfc-logo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 4px 12px;
 }
-/* Excelsior logo linksonder in header */
-.exc-logo-corner {
-  position: absolute; bottom: 10px; left: 10px; z-index: 3; opacity: .9;
+
+.lfc-header-inner {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  position: relative;
+  z-index: 2;
 }
 
 .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 1.25rem; margin-bottom: .875rem; }
@@ -35,7 +38,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .btn:active { transform: scale(.97); }
 .btn-lfc { background: #C8102E; border-color: #C8102E; color: #F6EB61; }
 .btn-lfc:hover { background: #a00d24; }
-.btn-gold { background: #F6EB61; border-color: #c8b800; color: #111; }
 
 .mc-opt { display: block; width: 100%; padding: 13px 16px; border-radius: 10px; border: 2px solid #e5e7eb; background: #fff; color: #111; font-size: 15px; cursor: pointer; text-align: left; margin-bottom: 8px; font-family: inherit; transition: all .12s; }
 .mc-opt:hover:not(:disabled) { border-color: #C8102E; background: #fff5f5; }
@@ -64,9 +66,8 @@ input[type=text]:focus { outline: none; border-color: #C8102E; box-shadow: 0 0 0
 .wrong-item:last-child { border-bottom: none; }
 .back-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #6b7280; padding: 0 4px; line-height: 1; }
 .section-label { font-size: 11px; color: #9ca3af; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
-.result-header { background: #C8102E; border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: .875rem; color: #F6EB61; position: relative; overflow: hidden; }
+.result-header { background: #C8102E; border-radius: 16px; padding: 1.5rem; text-align: center; margin-bottom: .875rem; color: #F6EB61; }
 
-/* FIFA KAART */
 .fifa-card {
   background: linear-gradient(160deg, #1a0000 0%, #C8102E 60%, #8b0000 100%);
   border-radius: 16px; padding: 1rem; margin-bottom: .875rem;
@@ -100,65 +101,59 @@ input[type=text]:focus { outline: none; border-color: #C8102E; box-shadow: 0 0 0
 <div id="s-home" class="screen active">
   <div class="lfc-header">
 
-    <!-- Liverpool logo rechtsboven -->
-    <div class="lfc-logo-corner">
-      <svg width="54" height="54" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- Schild -->
-        <path d="M50 5 L90 20 L90 60 Q90 85 50 97 Q10 85 10 60 L10 20 Z" fill="#C8102E" stroke="#F6EB61" stroke-width="3"/>
-        <!-- Liver bird silhouet (gestileerd) -->
+    <!-- Logo rij bovenaan: Excelsior links, Liverpool rechts -->
+    <div class="lfc-logo-row">
+
+      <!-- Excelsior Maassluis logo LINKS -->
+      <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 4 L88 18 L88 62 Q88 86 50 97 Q12 86 12 62 L12 18 Z" fill="#fff"/>
+        <!-- Rode bovenhelft -->
+        <path d="M50 4 L88 18 L88 50 L12 50 L12 18 Z" fill="#CC0000"/>
+        <!-- Zwarte schuine balk -->
+        <path d="M18 10 L82 50 L82 58 L18 18 Z" fill="#111"/>
+        <!-- Witte onderhelft -->
+        <path d="M12 50 L88 50 L88 62 Q88 86 50 97 Q12 86 12 62 Z" fill="#fff"/>
+        <!-- EXC tekst -->
+        <text x="50" y="80" text-anchor="middle" font-size="16" font-weight="900" fill="#CC0000" font-family="Arial">EXC</text>
+        <!-- Schildrand -->
+        <path d="M50 4 L88 18 L88 62 Q88 86 50 97 Q12 86 12 62 L12 18 Z" fill="none" stroke="#aaa" stroke-width="2"/>
+      </svg>
+
+      <!-- Midden: Academy tekst -->
+      <div style="text-align:center;flex:1;padding:0 6px;">
+        <div style="font-size:10px;letter-spacing:1px;color:rgba(246,235,97,.9);text-transform:uppercase;font-weight:700;">LFC Francais Academy</div>
+      </div>
+
+      <!-- Liverpool logo RECHTS -->
+      <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 4 L88 18 L88 62 Q88 86 50 97 Q12 86 12 62 L12 18 Z" fill="#8b0000" stroke="#F6EB61" stroke-width="3"/>
+        <!-- Liver bird -->
         <g fill="#F6EB61">
-          <!-- Lijf -->
-          <ellipse cx="50" cy="52" rx="14" ry="18"/>
-          <!-- Kop -->
-          <ellipse cx="50" cy="30" rx="9" ry="9"/>
-          <!-- Snavel -->
-          <polygon points="59,28 68,30 59,34"/>
-          <!-- Vleugel links -->
-          <path d="M36,45 Q20,35 22,20 Q30,30 36,40Z"/>
-          <!-- Vleugel rechts -->
-          <path d="M64,45 Q80,35 78,20 Q70,30 64,40Z"/>
-          <!-- Poot links -->
-          <rect x="40" y="68" width="5" height="12" rx="2"/>
-          <rect x="35" y="78" width="10" height="3" rx="1"/>
-          <!-- Poot rechts -->
-          <rect x="55" y="68" width="5" height="12" rx="2"/>
-          <rect x="55" y="78" width="10" height="3" rx="1"/>
+          <ellipse cx="50" cy="54" rx="13" ry="17"/>
+          <ellipse cx="50" cy="32" rx="9" ry="9"/>
+          <polygon points="59,30 70,32 59,35"/>
+          <path d="M37,47 Q20,36 23,20 Q31,32 37,43Z"/>
+          <path d="M63,47 Q80,36 77,20 Q69,32 63,43Z"/>
+          <rect x="41" y="70" width="5" height="11" rx="2"/>
+          <rect x="36" y="79" width="10" height="3" rx="1"/>
+          <rect x="54" y="70" width="5" height="11" rx="2"/>
+          <rect x="54" y="79" width="10" height="3" rx="1"/>
         </g>
-        <!-- LFC tekst -->
-        <text x="50" y="93" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61" font-family="Arial">LFC</text>
+        <text x="50" y="95" text-anchor="middle" font-size="8" font-weight="900" fill="#F6EB61" font-family="Arial">LFC</text>
       </svg>
     </div>
 
-    <!-- Excelsior Maassluis logo linksboven -->
-    <div class="exc-logo-corner">
-      <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- Schild -->
-        <path d="M50 4 L88 18 L88 58 Q88 83 50 96 Q12 83 12 58 L12 18 Z" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
-        <!-- Rood bovenste helft -->
-        <path d="M50 4 L88 18 L88 58 Q88 83 50 96 Q12 83 12 58 L12 18 Z" fill="#CC0000" clip-path="url(#top-half)"/>
-        <clipPath id="top-half"><rect x="0" y="0" width="100" height="50"/></clipPath>
-        <!-- Witte onderste helft -->
-        <path d="M12 58 Q12 83 50 96 Q88 83 88 58 L88 50 L12 50 Z" fill="#fff"/>
-        <!-- Zwarte diagonale balk -->
-        <path d="M20 15 L80 55 L75 65 L15 25Z" fill="#111"/>
-        <!-- E initiaal -->
-        <text x="50" y="78" text-anchor="middle" font-size="18" font-weight="900" fill="#CC0000" font-family="Arial">EXC</text>
-        <!-- Rand -->
-        <path d="M50 4 L88 18 L88 58 Q88 83 50 96 Q12 83 12 58 L12 18 Z" fill="none" stroke="#999" stroke-width="2"/>
-      </svg>
-    </div>
-
-    <div class="lfc-header-inner" style="padding-top:1.4rem;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-        <div style="padding-left:0;">
-          <div style="font-size:10px;letter-spacing:1px;color:rgba(246,235,97,.8);text-transform:uppercase;margin-bottom:2px;">LFC Francais Academy</div>
-          <div style="font-size:12px;color:rgba(246,235,97,.7);margin-bottom:6px;" id="h-levelname">Pupil</div>
+    <!-- Header inhoud: niveau, XP -->
+    <div class="lfc-header-inner">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:13px;color:rgba(246,235,97,.8);margin-bottom:4px;" id="h-levelname">Pupil</div>
           <div style="display:flex;align-items:baseline;gap:6px;">
-            <span style="font-size:30px;font-weight:800;color:#F6EB61;" id="h-xp">0</span>
-            <span style="font-size:12px;color:rgba(246,235,97,.6);">XP</span>
+            <span style="font-size:34px;font-weight:800;color:#F6EB61;" id="h-xp">0</span>
+            <span style="font-size:13px;color:rgba(246,235,97,.6);">XP</span>
           </div>
         </div>
-        <div id="h-crest" style="width:52px;height:52px;border-radius:50%;border:2px solid #F6EB61;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#F6EB61;background:rgba(246,235,97,.12);margin-top:10px;">LVL 1</div>
+        <div id="h-crest" style="width:52px;height:52px;border-radius:50%;border:2px solid #F6EB61;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#F6EB61;background:rgba(246,235,97,.12);">LVL 1</div>
       </div>
       <div style="margin-top:10px;">
         <div style="font-size:10px;color:rgba(246,235,97,.55);margin-bottom:4px;" id="h-xp-label">Naar niveau 2: 0 / 100 XP</div>
@@ -208,23 +203,19 @@ input[type=text]:focus { outline: none; border-color: #C8102E; box-shadow: 0 0 0
     <span class="badge badge-lfc" id="q-score-badge">0 pt</span>
   </div>
   <div class="pbar"><div class="pfill" id="q-pbar"></div></div>
-
-  <!-- Banner -->
   <div style="background:#C8102E;border-radius:12px;padding:9px 14px;margin-bottom:.75rem;display:flex;align-items:center;gap:10px;">
     <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 5 L90 20 L90 60 Q90 85 50 97 Q10 85 10 60 L10 20 Z" fill="#8b0000" stroke="#F6EB61" stroke-width="4"/>
-      <ellipse cx="50" cy="52" rx="12" ry="16" fill="#F6EB61"/>
-      <ellipse cx="50" cy="32" rx="8" ry="8" fill="#F6EB61"/>
-      <polygon points="58,30 66,32 58,35" fill="#F6EB61"/>
+      <path d="M50 5 L88 18 L88 62 Q88 85 50 97 Q12 85 12 62 L12 18 Z" fill="#8b0000" stroke="#F6EB61" stroke-width="4"/>
+      <ellipse cx="50" cy="54" rx="11" ry="15" fill="#F6EB61"/>
+      <ellipse cx="50" cy="33" rx="8" ry="8" fill="#F6EB61"/>
+      <polygon points="58,31 67,33 58,36" fill="#F6EB61"/>
     </svg>
     <div style="font-size:13px;font-weight:700;color:#F6EB61;">You'll Never Walk Alone!</div>
   </div>
-
   <div class="card" style="text-align:center;margin-bottom:1rem;">
     <div style="font-size:12px;color:#9ca3af;margin-bottom:8px;" id="q-direction"></div>
     <div style="font-size:22px;font-weight:700;color:#111;line-height:1.3;" id="q-word"></div>
   </div>
-
   <div id="q-mc-area"></div>
   <div id="q-type-area" style="display:none;">
     <input type="text" id="q-input" placeholder="typ het Franse woord..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
@@ -258,244 +249,151 @@ input[type=text]:focus { outline: none; border-color: #C8102E; box-shadow: 0 0 0
 
 </div>
 <script>
-// ── LFC SPELERS ──────────────────────────────────────────────────────────────
 var PLAYERS = [
-  {
-    name:'Mohamed Salah', pos:'AAV', nat:'Egypte', rating:92, era:'2017-heden',
+  { name:'Mohamed Salah', pos:'AAV', nat:'Egypte', rating:92, era:'2017-heden',
     stats:[{v:'232',l:'Goals'},{v:'90',l:'Assists'},{v:'1',l:'CL titel'}],
     fact:'Scoorde 32 Premier League goals in zijn eerste seizoen — een record.',
-    svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="45" y="55" width="20" height="50" rx="2" fill="#C8102E" opacity=".6"/><circle cx="45" cy="30" r="15" fill="#c8925a"/><ellipse cx="45" cy="24" rx="13" ry="8" fill="#2a1200"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#c8925a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#c8925a"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#c8925a"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#c8925a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">11</text><circle cx="58" cy="100" r="7" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/></svg>'
+    svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="45" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="30" r="15" fill="#c8925a"/><ellipse cx="45" cy="24" rx="13" ry="8" fill="#2a1200"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#c8925a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#c8925a"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#c8925a"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#c8925a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">11</text><circle cx="60" cy="100" r="7" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/></svg>'
   },
-  {
-    name:'Steven Gerrard', pos:'MID', nat:'Engeland', rating:94, era:'1998-2015',
+  { name:'Steven Gerrard', pos:'MID', nat:'Engeland', rating:94, era:'1998-2015',
     stats:[{v:'186',l:'Goals'},{v:'92',l:'Assists'},{v:'1',l:'CL titel'}],
     fact:'Aanvoerder van de legendarische CL comeback in Istanbul 2005.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="30" r="15" fill="#f0d0a0"/><ellipse cx="45" cy="23" rx="12" ry="7" fill="#b08040"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#f0d0a0"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#f0d0a0"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#f0d0a0"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#f0d0a0"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">8</text></svg>'
   },
-  {
-    name:'Kenny Dalglish', pos:'SPT', nat:'Schotland', rating:96, era:'1977-1990',
+  { name:'Kenny Dalglish', pos:'SPT', nat:'Schotland', rating:96, era:'1977-1990',
     stats:[{v:'172',l:'Goals'},{v:'6',l:'Titels'},{v:'1',l:'Legende'}],
-    fact:'King Kenny: de meest geliefde speler én manager in LFC-geschiedenis.',
+    fact:'King Kenny: de meest geliefde speler en manager in LFC-geschiedenis.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#C8102E" opacity=".7"/><circle cx="45" cy="30" r="15" fill="#e8c49a"/><ellipse cx="45" cy="22" rx="13" ry="9" fill="#8b6020"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#e8c49a"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#e8c49a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">7</text></svg>'
   },
-  {
-    name:'Virgil van Dijk', pos:'VED', nat:'Nederland', rating:91, era:'2018-heden',
+  { name:'Virgil van Dijk', pos:'VED', nat:'Nederland', rating:91, era:'2018-heden',
     stats:[{v:'45',l:'Goals'},{v:'1',l:'CL titel'},{v:'1',l:'PL titel'}],
     fact:'Na zijn komst verloor Liverpool 16 maanden lang geen competitiewedstrijd.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="45" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="28" r="17" fill="#c8925a"/><ellipse cx="45" cy="21" rx="14" ry="9" fill="#1a0a00"/><rect x="32" y="55" width="6" height="35" rx="2" fill="#8b0000"/><rect x="52" y="55" width="6" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="9" height="14" rx="3" fill="#c8925a"/><rect x="51" y="90" width="9" height="14" rx="3" fill="#c8925a"/><rect x="28" y="36" width="7" height="22" rx="3" fill="#c8925a"/><rect x="55" y="36" width="7" height="22" rx="3" fill="#c8925a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">4</text></svg>'
   },
-  {
-    name:'Robbie Fowler', pos:'SPT', nat:'Engeland', rating:91, era:'1993-2007',
+  { name:'Robbie Fowler', pos:'SPT', nat:'Engeland', rating:91, era:'1993-2007',
     stats:[{v:'183',l:'Goals'},{v:'3',l:'Seizoenen'},{v:'1',l:'God'}],
-    fact:'Bijnaam "God" door fans. Scoorde hattrick in 4 minuten 33 seconden.',
+    fact:'Bijnaam God door fans. Scoorde hattrick in 4 minuten 33 seconden.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="30" r="15" fill="#f0d0a0"/><ellipse cx="45" cy="23" rx="12" ry="8" fill="#d0a060"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#f0d0a0"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#f0d0a0"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#f0d0a0"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#f0d0a0"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">9</text></svg>'
   },
-  {
-    name:'Sadio Mane', pos:'AAV', nat:'Senegal', rating:90, era:'2016-2022',
+  { name:'Sadio Mane', pos:'AAV', nat:'Senegal', rating:90, era:'2016-2022',
     stats:[{v:'120',l:'Goals'},{v:'48',l:'Assists'},{v:'1',l:'CL titel'}],
     fact:'Won de Afrika Cup met Senegal in 2022. Scoorde in de CL-finale 2019.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#C8102E" opacity=".6"/><circle cx="45" cy="30" r="15" fill="#5a3010"/><ellipse cx="45" cy="23" rx="13" ry="8" fill="#1a0800"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#5a3010"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#5a3010"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#5a3010"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#5a3010"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">10</text></svg>'
   },
-  {
-    name:'Alisson Becker', pos:'KEE', nat:'Brazilie', rating:90, era:'2018-heden',
-    stats:[{v:'1',l:'CL titel'},{v:'1',l:'PL titel'},{v:'1',l:'Gouden handschoen'}],
-    fact:'Scoorde het winnende doelpunt met zijn hoofd tegen West Brom in 2021.',
+  { name:'Alisson Becker', pos:'KEE', nat:'Brazilie', rating:90, era:'2018-heden',
+    stats:[{v:'1',l:'CL titel'},{v:'1',l:'PL titel'},{v:'1',l:'Goud. handschoen'}],
+    fact:'Scoorde het winnende kopbal tegen West Brom in 2021.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#1a5c1a"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#0d3d0d"/><circle cx="45" cy="30" r="15" fill="#8a5a20"/><ellipse cx="45" cy="23" rx="13" ry="8" fill="#3a1800"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#0d3d0d"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#1a5c1a"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#8a5a20"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#8a5a20"/><rect x="24" y="33" width="8" height="24" rx="3" fill="#8a5a20" opacity=".8"/><rect x="58" y="33" width="8" height="24" rx="3" fill="#8a5a20" opacity=".8"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">1</text></svg>'
   },
-  {
-    name:'Luis Garcia', pos:'MID', nat:'Spanje', rating:86, era:'2004-2007',
-    stats:[{v:'30',l:'Goals'},{v:'3',l:'Seizoenen'},{v:'1',l:'CL titel'}],
-    fact:'Zijn "ghost goal" in de halve finale van 2005 is nog steeds legendarisch.',
-    svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="30" r="15" fill="#d4a070"/><ellipse cx="45" cy="23" rx="12" ry="8" fill="#3a1800"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#d4a070"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#d4a070"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#d4a070"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#d4a070"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">10</text></svg>'
-  },
-  {
-    name:'Ian Rush', pos:'SPT', nat:'Wales', rating:93, era:'1980-1996',
+  { name:'Ian Rush', pos:'SPT', nat:'Wales', rating:93, era:'1980-1996',
     stats:[{v:'346',l:'Goals'},{v:'5',l:'Titels'},{v:'5',l:'FA cups'}],
-    fact:'Liverpool\'s topscorer aller tijden met 346 goals in alle competities.',
+    fact:'Liverpool topscorer aller tijden met 346 goals in alle competities.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="45" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="30" r="15" fill="#e8c49a"/><ellipse cx="45" cy="22" rx="13" ry="9" fill="#4a2800"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#e8c49a"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#e8c49a"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#e8c49a"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">9</text></svg>'
   },
-  {
-    name:'Trent Alexander-Arnold', pos:'RVB', nat:'Engeland', rating:89, era:'2016-heden',
-    stats:[{v:'22',l:'Goals'},{v:'100+',l:'Assists'},{v:'1',l:'CL titel'}],
+  { name:'Trent Alexander-Arnold', pos:'RVB', nat:'Engeland', rating:89, era:'2016-heden',
+    stats:[{v:'100+',l:'Assists'},{v:'1',l:'CL titel'},{v:'1',l:'PL titel'}],
     fact:'Meeste assists ooit door een verdediger in de Premier League.',
     svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="30" r="14" fill="#f0c898"/><ellipse cx="45" cy="23" rx="12" ry="7" fill="#6b3a1a"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#f0c898"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#f0c898"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#f0c898"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#f0c898"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">66</text></svg>'
   },
+  { name:'Luis Garcia', pos:'MID', nat:'Spanje', rating:86, era:'2004-2007',
+    stats:[{v:'30',l:'Goals'},{v:'3',l:'Seizoenen'},{v:'1',l:'CL titel'}],
+    fact:'Zijn ghost goal in de halve finale van 2005 is nog steeds legendarisch.',
+    svg:'<svg viewBox="0 0 90 120" xmlns="http://www.w3.org/2000/svg"><rect x="25" y="55" width="40" height="50" rx="4" fill="#C8102E"/><rect x="25" y="55" width="20" height="50" rx="2" fill="#8b0000"/><circle cx="45" cy="30" r="15" fill="#d4a070"/><ellipse cx="45" cy="23" rx="12" ry="8" fill="#3a1800"/><rect x="32" y="55" width="5" height="35" rx="2" fill="#8b0000"/><rect x="53" y="55" width="5" height="35" rx="2" fill="#C8102E"/><rect x="30" y="90" width="8" height="14" rx="3" fill="#d4a070"/><rect x="52" y="90" width="8" height="14" rx="3" fill="#d4a070"/><rect x="29" y="36" width="6" height="22" rx="3" fill="#d4a070"/><rect x="55" y="36" width="6" height="22" rx="3" fill="#d4a070"/><text x="45" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#F6EB61">10</text></svg>'
+  },
 ];
 
-var usedPlayers = [];
-function getPlayer() {
-  if (usedPlayers.length >= PLAYERS.length) usedPlayers = [];
-  var available = PLAYERS.filter(function(p){ return usedPlayers.indexOf(p.name) === -1; });
-  var p = available[Math.floor(Math.random() * available.length)];
-  usedPlayers.push(p.name);
-  return p;
+var usedPlayers=[];
+function getPlayer(){
+  if(usedPlayers.length>=PLAYERS.length) usedPlayers=[];
+  var av=PLAYERS.filter(function(p){return usedPlayers.indexOf(p.name)===-1;});
+  var p=av[Math.floor(Math.random()*av.length)];
+  usedPlayers.push(p.name); return p;
+}
+function renderFifaCard(p){
+  return '<div class="fifa-card"><div class="fifa-silhouette">'+p.svg+'</div><div class="fifa-info"><div class="fifa-rating">'+p.rating+'</div><div class="fifa-pos">'+p.pos+' | '+p.era+'</div><div class="fifa-name">'+p.name+'</div><div class="fifa-nat">'+p.nat+'</div><div class="fifa-stats">'+p.stats.map(function(s){return '<div class="fifa-stat"><div class="fifa-stat-val">'+s.v+'</div><div class="fifa-stat-lbl">'+s.l+'</div></div>';}).join('')+'</div><div class="fifa-fact">'+p.fact+'</div></div></div>';
 }
 
-function renderFifaCard(p) {
-  return '<div class="fifa-card">' +
-    '<div class="fifa-silhouette">' + p.svg + '</div>' +
-    '<div class="fifa-info">' +
-      '<div class="fifa-rating">' + p.rating + '</div>' +
-      '<div class="fifa-pos">' + p.pos + ' &nbsp;|&nbsp; ' + p.era + '</div>' +
-      '<div class="fifa-name">' + p.name + '</div>' +
-      '<div class="fifa-nat">' + p.nat + '</div>' +
-      '<div class="fifa-stats">' +
-        p.stats.map(function(s){ return '<div class="fifa-stat"><div class="fifa-stat-val">'+s.v+'</div><div class="fifa-stat-lbl">'+s.l+'</div></div>'; }).join('') +
-      '</div>' +
-      '<div class="fifa-fact">' + p.fact + '</div>' +
-    '</div>' +
-  '</div>';
-}
-
-// ── WOORDENLIJSTEN ────────────────────────────────────────────────────────────
-var CATS = [
-  {id:'weg', label:'De weg vragen', icon:'🗺️', color:'#fff5f5', words:[
-    {fr:'vous allez', nl:'u gaat, jullie gaan'},
-    {fr:'la rue', nl:'de straat'},
-    {fr:'a gauche', nl:'naar links'},
-    {fr:'a droite', nl:'naar rechts'},
-    {fr:'premier / premiere', nl:'eerste'},
-    {fr:'deuxieme', nl:'tweede'},
-    {fr:'troisieme', nl:'derde'},
-    {fr:'ensuite', nl:'daarna'},
-    {fr:'on y va', nl:'wij gaan erheen'},
-    {fr:'tout pres', nl:'dichtbij'},
-    {fr:'la-bas', nl:'daar, daarginds'},
-    {fr:'la', nl:'daar'},
-    {fr:'le terrain de foot', nl:'het voetbalveld'},
-    {fr:'la gare', nl:'het station'},
-    {fr:'tu as raison', nl:'jij hebt gelijk'},
-    {fr:'simple', nl:'simpel, eenvoudig'},
+var CATS=[
+  {id:'weg',label:'De weg vragen',icon:'🗺️',color:'#fff5f5',words:[
+    {fr:'vous allez',nl:'u gaat, jullie gaan'},{fr:'la rue',nl:'de straat'},
+    {fr:'a gauche',nl:'naar links'},{fr:'a droite',nl:'naar rechts'},
+    {fr:'premier / premiere',nl:'eerste'},{fr:'deuxieme',nl:'tweede'},
+    {fr:'troisieme',nl:'derde'},{fr:'ensuite',nl:'daarna'},
+    {fr:'on y va',nl:'wij gaan erheen'},{fr:'tout pres',nl:'dichtbij'},
+    {fr:'la-bas',nl:'daar, daarginds'},{fr:'la',nl:'daar'},
+    {fr:'le terrain de foot',nl:'het voetbalveld'},{fr:'la gare',nl:'het station'},
+    {fr:'tu as raison',nl:'jij hebt gelijk'},{fr:'simple',nl:'simpel, eenvoudig'},
   ]},
-  {id:'zinnen', label:'Phrases-cles: de weg', icon:'💬', color:'#fef9e7', words:[
-    {fr:'Pardon, ou est la gare?', nl:'Sorry, waar is het station?'},
-    {fr:'C\'est tout droit.', nl:'Het is rechtdoor.'},
-    {fr:'Vous pouvez repeter?', nl:'Kunt u het herhalen?'},
-    {fr:'C\'est loin?', nl:'Is het ver?'},
-    {fr:'Non, c\'est a 15 minutes a pied.', nl:'Nee, het is 15 minuten lopen.'},
-    {fr:'Alors, on y va en bus.', nl:'Dan gaan wij met de bus.'},
+  {id:'zinnen',label:'Phrases-cles: de weg',icon:'💬',color:'#fef9e7',words:[
+    {fr:'Pardon, ou est la gare?',nl:'Sorry, waar is het station?'},
+    {fr:"C'est tout droit.",nl:'Het is rechtdoor.'},
+    {fr:'Vous pouvez repeter?',nl:'Kunt u het herhalen?'},
+    {fr:"C'est loin?",nl:'Is het ver?'},
+    {fr:"Non, c'est a 15 minutes a pied.",nl:'Nee, het is 15 minuten lopen.'},
+    {fr:'Alors, on y va en bus.',nl:'Dan gaan wij met de bus.'},
   ]},
-  {id:'vervoer', label:'Vervoer & de stad', icon:'🚌', color:'#f0fdf4', words:[
-    {fr:'la capitale', nl:'de hoofdstad'},
-    {fr:'la ville', nl:'de stad'},
-    {fr:'la vue', nl:'het uitzicht'},
-    {fr:'parfois', nl:'soms'},
-    {fr:'pas de', nl:'geen'},
-    {fr:'la sortie', nl:'het uitstapje'},
-    {fr:'monter', nl:'naar boven gaan, instappen'},
-    {fr:'en metro', nl:'met de metro'},
-    {fr:'en voiture', nl:'met de auto'},
-    {fr:'en bus', nl:'met de bus'},
-    {fr:'a velo', nl:'op de fiets'},
-    {fr:'a pied', nl:'lopend'},
-    {fr:'vite', nl:'snel'},
-    {fr:'cher', nl:'duur'},
-    {fr:'pratique', nl:'praktisch, handig'},
-    {fr:'dangereux', nl:'gevaarlijk'},
+  {id:'vervoer',label:'Vervoer & de stad',icon:'🚌',color:'#f0fdf4',words:[
+    {fr:'la capitale',nl:'de hoofdstad'},{fr:'la ville',nl:'de stad'},
+    {fr:'la vue',nl:'het uitzicht'},{fr:'parfois',nl:'soms'},
+    {fr:'pas de',nl:'geen'},{fr:'la sortie',nl:'het uitstapje'},
+    {fr:'monter',nl:'naar boven gaan, instappen'},{fr:'en metro',nl:'met de metro'},
+    {fr:'en voiture',nl:'met de auto'},{fr:'en bus',nl:'met de bus'},
+    {fr:'a velo',nl:'op de fiets'},{fr:'a pied',nl:'lopend'},
+    {fr:'vite',nl:'snel'},{fr:'cher',nl:'duur'},
+    {fr:'pratique',nl:'praktisch, handig'},{fr:'dangereux',nl:'gevaarlijk'},
   ]},
-  {id:'vrije-tijd', label:'Vrije tijd', icon:'⚽', color:'#fff5f5', words:[
-    {fr:'on doit', nl:'wij moeten'},
-    {fr:'il est parti', nl:'hij is vertrokken'},
-    {fr:'je veux', nl:'ik wil'},
-    {fr:'c\'etait', nl:'het was'},
-    {fr:'retrouver', nl:'terugvinden'},
-    {fr:'visiter', nl:'bezoeken'},
-    {fr:'faire du foot', nl:'voetballen'},
-    {fr:'jouer a la console', nl:'gamen'},
-    {fr:'jouer de la guitare', nl:'gitaar spelen'},
-    {fr:'regarder la tele', nl:'tv-kijken'},
-    {fr:'faire les magasins', nl:'winkelen'},
-    {fr:'le temps', nl:'de tijd'},
-    {fr:'seul(e)', nl:'alleen'},
-    {fr:'autre', nl:'andere'},
-    {fr:'jamais', nl:'nooit'},
-    {fr:'parfait(e)', nl:'perfect'},
+  {id:'vrije-tijd',label:'Vrije tijd',icon:'⚽',color:'#fff5f5',words:[
+    {fr:'on doit',nl:'wij moeten'},{fr:'il est parti',nl:'hij is vertrokken'},
+    {fr:'je veux',nl:'ik wil'},{fr:"c'etait",nl:'het was'},
+    {fr:'retrouver',nl:'terugvinden'},{fr:'visiter',nl:'bezoeken'},
+    {fr:'faire du foot',nl:'voetballen'},{fr:'jouer a la console',nl:'gamen'},
+    {fr:'jouer de la guitare',nl:'gitaar spelen'},{fr:'regarder la tele',nl:'tv-kijken'},
+    {fr:'faire les magasins',nl:'winkelen'},{fr:'le temps',nl:'de tijd'},
+    {fr:'seul(e)',nl:'alleen'},{fr:'autre',nl:'andere'},
+    {fr:'jamais',nl:'nooit'},{fr:'parfait(e)',nl:'perfect'},
   ]},
-  {id:'zinnen2', label:'Zinnen: wat gaan we doen?', icon:'🗣️', color:'#f5f3ff', words:[
-    {fr:'Qu\'est-ce qu\'on va faire?', nl:'Wat gaan wij doen?'},
-    {fr:'On va faire les magasins.', nl:'Wij gaan winkelen.'},
-    {fr:'Et apres?', nl:'En daarna?'},
-    {fr:'On va manger au McDo.', nl:'Wij gaan eten bij McDonald\'s.'},
+  {id:'zinnen2',label:'Zinnen: wat gaan we doen?',icon:'🗣️',color:'#f5f3ff',words:[
+    {fr:"Qu'est-ce qu'on va faire?",nl:'Wat gaan wij doen?'},
+    {fr:'On va faire les magasins.',nl:'Wij gaan winkelen.'},
+    {fr:'Et apres?',nl:'En daarna?'},
+    {fr:"On va manger au McDo.",nl:"Wij gaan eten bij McDonald's."},
   ]},
 ];
 
-var LEVELS = [
-  {n:'Pupil',xp:0},{n:'Reservespeler',xp:100},{n:'Basisspeler',xp:250},
-  {n:'Aanvoerder',xp:500},{n:'Topscorer',xp:800},{n:'Anfield Legend',xp:1200}
-];
+var LEVELS=[{n:'Pupil',xp:0},{n:'Reservespeler',xp:100},{n:'Basisspeler',xp:250},{n:'Aanvoerder',xp:500},{n:'Topscorer',xp:800},{n:'Anfield Legend',xp:1200}];
+var xp=0,pendingWords=null,currentWords=[],qIndex=0,qScore=0,qWrong=[],qMode='',lastWords=[],lastMode='';
 
-var xp=0, pendingWords=null, currentWords=[], qIndex=0, qScore=0, qWrong=[], qMode='', lastWords=[], lastMode='';
-
-function getLvl(x){ var l=0; for(var i=0;i<LEVELS.length;i++){if(x>=LEVELS[i].xp)l=i;} return l; }
-
+function getLvl(x){var l=0;for(var i=0;i<LEVELS.length;i++){if(x>=LEVELS[i].xp)l=i;}return l;}
 function updateHUD(){
   var lvl=getLvl(xp);
   document.getElementById('h-levelname').textContent=LEVELS[lvl].n;
   document.getElementById('h-xp').textContent=xp;
   document.getElementById('h-crest').textContent='LVL '+(lvl+1);
-  var next=LEVELS[Math.min(lvl+1,LEVELS.length-1)].xp, prev=LEVELS[lvl].xp;
+  var next=LEVELS[Math.min(lvl+1,LEVELS.length-1)].xp,prev=LEVELS[lvl].xp;
   var pct=lvl>=LEVELS.length-1?100:Math.round(((xp-prev)/(next-prev))*100);
   document.getElementById('h-xp-label').textContent='Naar niveau '+(lvl+2)+': '+(xp-prev)+' / '+(next-prev)+' XP';
   document.getElementById('h-xpbar').style.width=pct+'%';
   renderCats();
 }
-
 function renderCats(){
   var h='';
-  for(var i=0;i<CATS.length;i++){
-    var c=CATS[i];
-    h+='<button class="cat-btn" data-catidx="'+i+'">' +
-      '<div class="cat-icon" style="background:'+c.color+';">'+c.icon+'</div>' +
-      '<div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+c.label+'</div><div style="font-size:12px;color:#6b7280;">'+c.words.length+' woorden</div></div>' +
-      '<span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';
-  }
+  for(var i=0;i<CATS.length;i++){var c=CATS[i];h+='<button class="cat-btn" data-catidx="'+i+'"><div class="cat-icon" style="background:'+c.color+';">'+c.icon+'</div><div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+c.label+'</div><div style="font-size:12px;color:#6b7280;">'+c.words.length+' woorden</div></div><span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';}
   document.getElementById('cat-list').innerHTML=h;
   var btns=document.querySelectorAll('.cat-btn');
-  for(var i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){ selectCat(parseInt(this.getAttribute('data-catidx'))); });
+  for(var i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){selectCat(parseInt(this.getAttribute('data-catidx')));});
 }
-
-function selectCat(idx){
-  pendingWords=CATS[idx].words;
-  document.getElementById('mode-title').textContent=CATS[idx].label;
-  document.getElementById('mode-sub').textContent=CATS[idx].words.length+' woorden';
-  renderModeList(); goTo('s-mode');
-}
-
+function selectCat(idx){pendingWords=CATS[idx].words;document.getElementById('mode-title').textContent=CATS[idx].label;document.getElementById('mode-sub').textContent=CATS[idx].words.length+' woorden';renderModeList();goTo('s-mode');}
 function renderModeList(){
-  var modes=[
-    {key:'mc-fr2nl',icon:'🇫🇷',label:'Frans naar Nederlands',desc:'Meerkeuze — kies de vertaling'},
-    {key:'mc-nl2fr',icon:'🇳🇱',label:'Nederlands naar Frans',desc:'Meerkeuze — kies het Franse woord'},
-    {key:'type-nl2fr',icon:'✏️',label:'Typ het Frans',desc:'Schrijfoefening — type zelf het woord'}
-  ];
+  var modes=[{key:'mc-fr2nl',icon:'🇫🇷',label:'Frans naar Nederlands',desc:'Meerkeuze — kies de vertaling'},{key:'mc-nl2fr',icon:'🇳🇱',label:'Nederlands naar Frans',desc:'Meerkeuze — kies het Franse woord'},{key:'type-nl2fr',icon:'✏️',label:'Typ het Frans',desc:'Schrijfoefening — type zelf het woord'}];
   var h='';
-  for(var i=0;i<modes.length;i++){
-    h+='<button class="mode-btn" data-mode="'+modes[i].key+'">' +
-      '<span style="font-size:22px;">'+modes[i].icon+'</span>' +
-      '<div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+modes[i].label+'</div><div style="font-size:12px;color:#6b7280;">'+modes[i].desc+'</div></div>' +
-      '<span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';
-  }
+  for(var i=0;i<modes.length;i++){h+='<button class="mode-btn" data-mode="'+modes[i].key+'"><span style="font-size:22px;">'+modes[i].icon+'</span><div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+modes[i].label+'</div><div style="font-size:12px;color:#6b7280;">'+modes[i].desc+'</div></div><span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';}
   document.getElementById('mode-list').innerHTML=h;
   var btns=document.querySelectorAll('.mode-btn');
-  for(var i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){ startQuiz(this.getAttribute('data-mode')); });
+  for(var i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){startQuiz(this.getAttribute('data-mode'));});
 }
-
-function goTo(id){
-  var ss=document.querySelectorAll('.screen');
-  for(var i=0;i<ss.length;i++) ss[i].classList.remove('active');
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-  if(id==='s-home') updateHUD();
-}
-
-function shuffle(a){ var arr=a.slice(); for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;} return arr; }
-
-function startQuiz(mode){
-  lastWords=pendingWords; lastMode=mode;
-  currentWords=shuffle(pendingWords).slice(0,Math.min(pendingWords.length,15));
-  qIndex=0; qScore=0; qWrong=[]; qMode=mode;
-  goTo('s-quiz'); loadQ();
-}
-
+function goTo(id){var ss=document.querySelectorAll('.screen');for(var i=0;i<ss.length;i++)ss[i].classList.remove('active');document.getElementById(id).classList.add('active');window.scrollTo(0,0);if(id==='s-home')updateHUD();}
+function shuffle(a){var arr=a.slice();for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;}
+function startQuiz(mode){lastWords=pendingWords;lastMode=mode;currentWords=shuffle(pendingWords).slice(0,Math.min(pendingWords.length,15));qIndex=0;qScore=0;qWrong=[];qMode=mode;goTo('s-quiz');loadQ();}
 function loadQ(){
   var total=currentWords.length;
   document.getElementById('q-counter').textContent=(qIndex+1)+' / '+total;
@@ -503,7 +401,7 @@ function loadQ(){
   document.getElementById('q-score-badge').textContent=qScore+' pt';
   document.getElementById('q-fb').innerHTML='';
   document.getElementById('q-next-btn').style.display='none';
-  var w=currentWords[qIndex], isType=(qMode==='type-nl2fr'), isFr2nl=(qMode==='mc-fr2nl');
+  var w=currentWords[qIndex],isType=(qMode==='type-nl2fr'),isFr2nl=(qMode==='mc-fr2nl');
   if(isType){
     document.getElementById('q-direction').textContent='Hoe zeg je dit in het Frans?';
     document.getElementById('q-word').textContent=w.nl;
@@ -514,80 +412,48 @@ function loadQ(){
     document.getElementById('q-type-fb').textContent='';
     document.getElementById('q-type-next').style.display='none';
     document.getElementById('q-check-btn').style.display='block';
-    setTimeout(function(){ document.getElementById('q-input').focus(); },80);
+    setTimeout(function(){document.getElementById('q-input').focus();},80);
   } else {
     document.getElementById('q-direction').textContent=isFr2nl?'Wat betekent dit?':'Hoe zeg je dit in het Frans?';
     document.getElementById('q-word').textContent=isFr2nl?w.fr:w.nl;
     document.getElementById('q-type-area').style.display='none';
     document.getElementById('q-mc-area').style.display='block';
-    var allW=[]; for(var i=0;i<CATS.length;i++) allW=allW.concat(CATS[i].words);
-    var correctVal=isFr2nl?w.nl:w.fr, pool=[];
-    for(var i=0;i<allW.length;i++){ var v=isFr2nl?allW[i].nl:allW[i].fr; if(v!==correctVal) pool.push(allW[i]); }
+    var allW=[];for(var i=0;i<CATS.length;i++)allW=allW.concat(CATS[i].words);
+    var correctVal=isFr2nl?w.nl:w.fr,pool=[];
+    for(var i=0;i<allW.length;i++){var v=isFr2nl?allW[i].nl:allW[i].fr;if(v!==correctVal)pool.push(allW[i]);}
     var opts=shuffle([w].concat(shuffle(pool).slice(0,3)));
     var h='';
-    for(var i=0;i<opts.length;i++){
-      var lbl=isFr2nl?opts[i].nl:opts[i].fr, isC=(lbl===correctVal);
-      h+='<button class="mc-opt" data-correct="'+(isC?'1':'0')+'" data-correctval="'+correctVal.replace(/"/g,'&quot;').replace(/'/g,'&#39;')+'">'+lbl+'</button>';
-    }
+    for(var i=0;i<opts.length;i++){var lbl=isFr2nl?opts[i].nl:opts[i].fr,isC=(lbl===correctVal);h+='<button class="mc-opt" data-correct="'+(isC?'1':'0')+'" data-correctval="'+correctVal.replace(/"/g,'&quot;').replace(/'/g,'&#39;')+'">'+lbl+'</button>';}
     document.getElementById('q-mc-area').innerHTML=h;
     var btns=document.querySelectorAll('.mc-opt');
-    for(var i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){ checkMC(this); });
+    for(var i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){checkMC(this);});
   }
 }
-
 function checkMC(btn){
-  var isCorrect=btn.getAttribute('data-correct')==='1', correctVal=btn.getAttribute('data-correctval');
+  var isCorrect=btn.getAttribute('data-correct')==='1',correctVal=btn.getAttribute('data-correctval');
   var btns=document.querySelectorAll('.mc-opt');
   for(var i=0;i<btns.length;i++) btns[i].disabled=true;
   var fb=document.getElementById('q-fb');
-  if(isCorrect){
-    btn.classList.add('correct'); qScore++;
-    fb.innerHTML='<div class="goal-flash">⚽ Goal! Speler van de wedstrijd:</div>'+renderFifaCard(getPlayer());
-  } else {
-    btn.classList.add('wrong');
-    for(var i=0;i<btns.length;i++){ if(btns[i].getAttribute('data-correct')==='1') btns[i].classList.add('correct'); }
-    fb.innerHTML='<div class="wrong-flash">❌ Het goede antwoord: <strong>'+correctVal+'</strong></div>';
-    qWrong.push(currentWords[qIndex]);
-  }
+  if(isCorrect){btn.classList.add('correct');qScore++;fb.innerHTML='<div class="goal-flash">⚽ Goal! Speler van de wedstrijd:</div>'+renderFifaCard(getPlayer());}
+  else{btn.classList.add('wrong');for(var i=0;i<btns.length;i++){if(btns[i].getAttribute('data-correct')==='1')btns[i].classList.add('correct');}fb.innerHTML='<div class="wrong-flash">❌ Het goede antwoord: <strong>'+correctVal+'</strong></div>';qWrong.push(currentWords[qIndex]);}
   document.getElementById('q-next-btn').style.display='block';
 }
-
 function checkType(){
   var val=document.getElementById('q-input').value.trim().toLowerCase();
   if(!val) return;
   var correct=currentWords[qIndex].fr.toLowerCase();
   document.getElementById('q-input').disabled=true;
   var fb2=document.getElementById('q-type-fb');
-  if(val===correct){
-    fb2.textContent=''; qScore++;
-    document.getElementById('q-fb').innerHTML='<div class="goal-flash">⚽ Perfect Frans! Speler van de wedstrijd:</div>'+renderFifaCard(getPlayer());
-  } else if(lev(val,correct)<=1){
-    fb2.textContent='Bijna! Het is: '+currentWords[qIndex].fr; fb2.style.color='#92400e';
-    document.getElementById('q-fb').innerHTML='';
-    qWrong.push(currentWords[qIndex]);
-  } else {
-    fb2.textContent='Fout. Het is: '+currentWords[qIndex].fr; fb2.style.color='#C8102E';
-    document.getElementById('q-fb').innerHTML='';
-    qWrong.push(currentWords[qIndex]);
-  }
+  if(val===correct){fb2.textContent='';qScore++;document.getElementById('q-fb').innerHTML='<div class="goal-flash">⚽ Perfect Frans! Speler van de wedstrijd:</div>'+renderFifaCard(getPlayer());}
+  else if(lev(val,correct)<=1){fb2.textContent='Bijna! Het is: '+currentWords[qIndex].fr;fb2.style.color='#92400e';document.getElementById('q-fb').innerHTML='';qWrong.push(currentWords[qIndex]);}
+  else{fb2.textContent='Fout. Het is: '+currentWords[qIndex].fr;fb2.style.color='#C8102E';document.getElementById('q-fb').innerHTML='';qWrong.push(currentWords[qIndex]);}
   document.getElementById('q-check-btn').style.display='none';
   document.getElementById('q-type-next').style.display='block';
 }
-
-function lev(a,b){
-  var m=a.length,n=b.length,d=[];
-  for(var i=0;i<=m;i++){d[i]=[];d[i][0]=i;}
-  for(var j=0;j<=n;j++) d[0][j]=j;
-  for(var i=1;i<=m;i++) for(var j=1;j<=n;j++)
-    d[i][j]=a[i-1]===b[j-1]?d[i-1][j-1]:1+Math.min(d[i-1][j],d[i][j-1],d[i-1][j-1]);
-  return d[m][n];
-}
-
-function nextQ(){ qIndex++; if(qIndex>=currentWords.length){showResult();return;} loadQ(); }
-
+function lev(a,b){var m=a.length,n=b.length,d=[];for(var i=0;i<=m;i++){d[i]=[];d[i][0]=i;}for(var j=0;j<=n;j++)d[0][j]=j;for(var i=1;i<=m;i++)for(var j=1;j<=n;j++)d[i][j]=a[i-1]===b[j-1]?d[i-1][j-1]:1+Math.min(d[i-1][j],d[i][j-1],d[i-1][j-1]);return d[m][n];}
+function nextQ(){qIndex++;if(qIndex>=currentWords.length){showResult();return;}loadQ();}
 function showResult(){
-  var total=currentWords.length, pct=Math.round((qScore/total)*100);
-  var earned=qScore*10+(pct>=80?50:pct>=60?20:0);
+  var total=currentWords.length,pct=Math.round((qScore/total)*100),earned=qScore*10+(pct>=80?50:pct>=60?20:0);
   xp+=earned;
   document.getElementById('r-trophy').textContent=pct>=80?'🏆':pct>=60?'⭐':'💪';
   document.getElementById('r-title').textContent=pct>=80?"You'll Never Walk Alone!":pct>=60?'Goed gespeeld!':'Blijven trainen!';
@@ -597,37 +463,25 @@ function showResult(){
   document.getElementById('r-wrong').textContent=total-qScore;
   document.getElementById('r-xp').textContent=earned;
   var wl=document.getElementById('r-wrong-list');
-  if(qWrong.length>0){
-    wl.style.display='block';
-    var wh='<div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:8px;">📚 Nog leren:</div>';
-    for(var i=0;i<qWrong.length;i++)
-      wh+='<div class="wrong-item"><span style="color:#C8102E;font-weight:600;">'+qWrong[i].fr+'</span><span style="color:#6b7280;">'+qWrong[i].nl+'</span></div>';
-    wl.innerHTML=wh;
-  } else { wl.style.display='none'; }
+  if(qWrong.length>0){wl.style.display='block';var wh='<div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:8px;">📚 Nog leren:</div>';for(var i=0;i<qWrong.length;i++)wh+='<div class="wrong-item"><span style="color:#C8102E;font-weight:600;">'+qWrong[i].fr+'</span><span style="color:#6b7280;">'+qWrong[i].nl+'</span></div>';wl.innerHTML=wh;}
+  else{wl.style.display='none';}
   goTo('s-result');
 }
-
-document.getElementById('btn-mix').addEventListener('click',function(){
-  var all=[]; for(var i=0;i<CATS.length;i++) all=all.concat(CATS[i].words);
-  pendingWords=all; document.getElementById('mode-title').textContent='Alles door elkaar';
-  document.getElementById('mode-sub').textContent=all.length+' woorden';
-  renderModeList(); goTo('s-mode');
-});
-document.getElementById('btn-back-mode').addEventListener('click',function(){ goTo('s-home'); });
-document.getElementById('btn-back-quiz').addEventListener('click',function(){ goTo('s-home'); });
+document.getElementById('btn-mix').addEventListener('click',function(){var all=[];for(var i=0;i<CATS.length;i++)all=all.concat(CATS[i].words);pendingWords=all;document.getElementById('mode-title').textContent='Alles door elkaar';document.getElementById('mode-sub').textContent=all.length+' woorden';renderModeList();goTo('s-mode');});
+document.getElementById('btn-back-mode').addEventListener('click',function(){goTo('s-home');});
+document.getElementById('btn-back-quiz').addEventListener('click',function(){goTo('s-home');});
 document.getElementById('q-next-btn').addEventListener('click',nextQ);
 document.getElementById('q-check-btn').addEventListener('click',checkType);
 document.getElementById('q-type-next').addEventListener('click',nextQ);
-document.getElementById('btn-replay').addEventListener('click',function(){ pendingWords=lastWords; startQuiz(lastMode); });
-document.getElementById('btn-home-result').addEventListener('click',function(){ goTo('s-home'); });
+document.getElementById('btn-replay').addEventListener('click',function(){pendingWords=lastWords;startQuiz(lastMode);});
+document.getElementById('btn-home-result').addEventListener('click',function(){goTo('s-home');});
 document.addEventListener('keydown',function(e){
   if(e.key!=='Enter'||!document.getElementById('s-quiz').classList.contains('active')) return;
   var cb=document.getElementById('q-check-btn'),tn=document.getElementById('q-type-next'),nb=document.getElementById('q-next-btn');
-  if(cb&&cb.style.display!=='none') checkType();
-  else if(tn&&tn.style.display!=='none') nextQ();
-  else if(nb&&nb.style.display!=='none') nextQ();
+  if(cb&&cb.style.display!=='none')checkType();
+  else if(tn&&tn.style.display!=='none')nextQ();
+  else if(nb&&nb.style.display!=='none')nextQ();
 });
-
 updateHUD();
 </script>
 </body>
