@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Franse Woordjes Quiz ⚽</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f2f5; min-height: 100vh; }
+#app { max-width: 430px; margin: 0 auto; padding: .75rem; }
+.screen { display: none; }
+.screen.active { display: block; }
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 1.25rem; margin-bottom: .875rem; }
+.btn { display: block; width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #d1d5db; background: #fff; color: #111; font-size: 15px; font-weight: 500; cursor: pointer; text-align: center; margin-bottom: 9px; font-family: inherit; }
+.btn:active { transform: scale(.97); }
+.btn-primary { background: #1a3a6b; border-color: #1a3a6b; color: #e8d97a; }
+.mc-opt { display: block; width: 100%; padding: 13px 16px; border-radius: 10px; border: 2px solid #e5e7eb; background: #fff; color: #111; font-size: 15px; cursor: pointer; text-align: left; margin-bottom: 8px; font-family: inherit; }
+.mc-opt.correct { background: #f0fdf4; border-color: #16a34a; color: #14532d; font-weight: 600; }
+.mc-opt.wrong { background: #fef2f2; border-color: #dc2626; color: #7f1d1d; }
+.pbar { height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; margin-bottom: 1rem; }
+.pfill { height: 100%; background: #1a3a6b; border-radius: 4px; transition: width .4s; }
+.xpbar { height: 10px; background: rgba(255,255,255,.25); border-radius: 5px; overflow: hidden; }
+.xpfill { height: 100%; background: #e8d97a; border-radius: 5px; transition: width .5s; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; }
+.badge-ucl { background: #1a3a6b; color: #e8d97a; }
+.badge-gray { background: #f3f4f6; color: #374151; }
+input[type=text] { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #d1d5db; font-size: 18px; color: #111; background: #fff; text-align: center; font-family: inherit; }
+input[type=text]:focus { outline: none; border-color: #1a3a6b; }
+.cat-btn { padding: 13px 14px; border-radius: 12px; border: 2px solid #e5e7eb; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: 8px; font-family: inherit; }
+.mode-btn { padding: 13px 14px; border-radius: 12px; border: 2px solid #e5e7eb; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: 8px; font-family: inherit; }
+.club-strip { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 8px; -webkit-overflow-scrolling: touch; }
+.club-strip::-webkit-scrollbar { display: none; }
+.club-badge { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; }
+.club-crest { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; border: 2px solid; }
+.club-name { font-size: 9px; color: #6b7280; text-align: center; max-width: 44px; line-height: 1.2; }
+.header-ucl { background: #1a3a6b; border-radius: 14px; padding: 1.25rem; margin-bottom: .875rem; color: #e8d97a; }
+.stat-box { background: #f9fafb; border-radius: 10px; padding: 10px; text-align: center; }
+.fb-box { border-radius: 12px; padding: 12px 16px; margin-bottom: .875rem; text-align: center; font-size: 15px; font-weight: 500; }
+.fb-correct { background: #f0fdf4; color: #14532d; border: 1px solid #86efac; }
+.fb-wrong { background: #fef2f2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.wrong-item { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #f3f4f6; font-size: 14px; }
+.wrong-item:last-child { border-bottom: none; }
+.back-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #6b7280; padding: 0 4px; line-height: 1; }
+.section-label { font-size: 11px; color: #9ca3af; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div id="app">
+
+<div id="s-home" class="screen active">
+  <div class="header-ucl">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div style="font-size:10px;letter-spacing:1px;opacity:.7;text-transform:uppercase;margin-bottom:2px;">UCL Francais Academy</div>
+        <div style="font-size:12px;opacity:.8;margin-bottom:6px;" id="h-levelname">Pupil</div>
+        <div style="display:flex;align-items:baseline;gap:6px;">
+          <span style="font-size:30px;font-weight:700;" id="h-xp">0</span>
+          <span style="font-size:12px;opacity:.7;">XP</span>
+        </div>
+      </div>
+      <div id="h-crest" style="width:54px;height:54px;border-radius:50%;border:2px solid #e8d97a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:rgba(232,217,122,.15);">LVL 1</div>
+    </div>
+    <div style="margin-top:10px;">
+      <div style="font-size:10px;opacity:.6;margin-bottom:4px;" id="h-xp-label">Naar niveau 2: 0 / 100 XP</div>
+      <div class="xpbar"><div class="xpfill" id="h-xpbar" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div style="margin-bottom:.75rem;">
+    <div class="section-label">Champions League clubs</div>
+    <div class="club-strip" id="club-strip"></div>
+  </div>
+  <div class="section-label">Kies een thema</div>
+  <div id="cat-list"></div>
+  <button class="btn" id="btn-mix">Alles door elkaar</button>
+</div>
+
+<div id="s-mode" class="screen">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+    <button class="back-btn" id="btn-back-mode">&#8592;</button>
+    <div>
+      <div style="font-size:17px;font-weight:700;" id="mode-title"></div>
+      <div style="font-size:13px;color:#6b7280;" id="mode-sub"></div>
+    </div>
+  </div>
+  <div id="mode-list"></div>
+</div>
+
+<div id="s-quiz" class="screen">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+    <button class="back-btn" id="btn-back-quiz">&#8592;</button>
+    <span class="badge badge-gray" id="q-counter"></span>
+    <span class="badge badge-ucl" id="q-score-badge">0 pt</span>
+  </div>
+  <div class="pbar"><div class="pfill" id="q-pbar"></div></div>
+  <div id="q-club-banner" style="border-radius:12px;padding:9px 14px;margin-bottom:.75rem;display:flex;align-items:center;gap:10px;"></div>
+  <div class="card" style="text-align:center;margin-bottom:1rem;">
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:8px;" id="q-direction"></div>
+    <div style="font-size:24px;font-weight:700;color:#111;line-height:1.3;" id="q-word"></div>
+  </div>
+  <div id="q-mc-area"></div>
+  <div id="q-type-area" style="display:none;">
+    <input type="text" id="q-input" placeholder="typ het Franse woord..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <div id="q-type-fb" style="text-align:center;font-size:15px;margin:10px 0;min-height:24px;font-weight:500;"></div>
+    <button class="btn btn-primary" id="q-check-btn">Controleer</button>
+    <button class="btn" id="q-type-next" style="display:none;">Volgende</button>
+  </div>
+  <div id="q-fb"></div>
+  <button id="q-next-btn" class="btn btn-primary" style="display:none;">Volgende</button>
+</div>
+
+<div id="s-result" class="screen">
+  <div id="r-club-header" style="border-radius:14px;padding:1.25rem;margin-bottom:.875rem;text-align:center;"></div>
+  <div class="card" style="margin-bottom:.875rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+      <div class="stat-box">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:2px;">Goed</div>
+        <div style="font-size:26px;font-weight:700;color:#16a34a;" id="r-good"></div>
+      </div>
+      <div class="stat-box">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:2px;">Fout</div>
+        <div style="font-size:26px;font-weight:700;color:#dc2626;" id="r-wrong"></div>
+      </div>
+      <div class="stat-box">
+        <div style="font-size:11px;color:#6b7280;margin-bottom:2px;">XP</div>
+        <div style="font-size:26px;font-weight:700;color:#1a3a6b;" id="r-xp"></div>
+      </div>
+    </div>
+  </div>
+  <div id="r-wrong-list" class="card" style="margin-bottom:.875rem;display:none;"></div>
+  <button class="btn btn-primary" id="btn-replay">Opnieuw proberen</button>
+  <button class="btn" id="btn-home-result">Terug naar het veld</button>
+</div>
+
+</div>
+<script>
+var CLUBS = [
+  {name:'Real Madrid', short:'RM',  bg:'#fefce8', fg:'#1a3a6b', bc:'#ca8a04'},
+  {name:'Man City',    short:'MC',  bg:'#e0f2fe', fg:'#0369a1', bc:'#6CABDD'},
+  {name:'Bayern',      short:'FCB', bg:'#fef2f2', fg:'#991b1b', bc:'#DC052D'},
+  {name:'PSG',         short:'PSG', bg:'#eff6ff', fg:'#1e3a5f', bc:'#DA291C'},
+  {name:'Barcelona',   short:'BAR', bg:'#fef2f2', fg:'#7c0a2e', bc:'#004D98'},
+  {name:'Liverpool',   short:'LFC', bg:'#fef2f2', fg:'#991b1b', bc:'#C8102E'},
+  {name:'Arsenal',     short:'AFC', bg:'#fef2f2', fg:'#b91c1c', bc:'#EF0107'},
+  {name:'Atletico',    short:'ATM', bg:'#eff6ff', fg:'#1e3a8a', bc:'#272E61'},
+  {name:'Dortmund',    short:'BVB', bg:'#fefce8', fg:'#78350f', bc:'#ca8a04'},
+  {name:'Inter',       short:'INT', bg:'#eff6ff', fg:'#1e3a8a', bc:'#010E80'},
+  {name:'Milan',       short:'ACM', bg:'#fef2f2', fg:'#991b1b', bc:'#FB090B'},
+  {name:'Ajax',        short:'AJX', bg:'#fef2f2', fg:'#9b1c1c', bc:'#D2122E'}
+];
+
+var CATS = [
+  {id:'groeten', label:'Groeten & beleefdheid', icon:'🤝', words:[
+    {fr:'bonjour', nl:'goedendag'},
+    {fr:'salut', nl:'hoi'},
+    {fr:'bonsoir', nl:'goedenavond'},
+    {fr:'au revoir', nl:'tot ziens'},
+    {fr:'merci', nl:'dank je wel'},
+    {fr:'sil vous plait', nl:'alstublieft'},
+    {fr:'excusez-moi', nl:'excuseer mij'},
+    {fr:'de rien', nl:'graag gedaan'},
+    {fr:'comment ca va', nl:'hoe gaat het'},
+    {fr:'ca va bien', nl:'het gaat goed'}
+  ]},
+  {id:'cijfers', label:'Getallen 1-20', icon:'🔢', words:[
+    {fr:'un',nl:'een'},{fr:'deux',nl:'twee'},{fr:'trois',nl:'drie'},{fr:'quatre',nl:'vier'},
+    {fr:'cinq',nl:'vijf'},{fr:'six',nl:'zes'},{fr:'sept',nl:'zeven'},{fr:'huit',nl:'acht'},
+    {fr:'neuf',nl:'negen'},{fr:'dix',nl:'tien'},{fr:'onze',nl:'elf'},{fr:'douze',nl:'twaalf'},
+    {fr:'treize',nl:'dertien'},{fr:'quatorze',nl:'veertien'},{fr:'quinze',nl:'vijftien'},
+    {fr:'seize',nl:'zestien'},{fr:'dix-sept',nl:'zeventien'},{fr:'dix-huit',nl:'achttien'},
+    {fr:'dix-neuf',nl:'negentien'},{fr:'vingt',nl:'twintig'}
+  ]},
+  {id:'kleuren', label:'Kleuren', icon:'🎨', words:[
+    {fr:'rouge',nl:'rood'},{fr:'bleu',nl:'blauw'},{fr:'jaune',nl:'geel'},{fr:'vert',nl:'groen'},
+    {fr:'blanc',nl:'wit'},{fr:'noir',nl:'zwart'},{fr:'orange',nl:'oranje'},{fr:'violet',nl:'paars'},
+    {fr:'rose',nl:'roze'},{fr:'gris',nl:'grijs'}
+  ]},
+  {id:'school', label:'School & klas', icon:'🏫', words:[
+    {fr:'le cahier',nl:'het schrift'},{fr:'le livre',nl:'het boek'},{fr:'le stylo',nl:'de pen'},
+    {fr:'la table',nl:'de tafel'},{fr:'la chaise',nl:'de stoel'},{fr:'le tableau',nl:'het bord'},
+    {fr:'le professeur',nl:'de leraar'},{fr:'leleve',nl:'de leerling'},
+    {fr:'la classe',nl:'de klas'},{fr:'la recreation',nl:'de pauze'},
+    {fr:'les devoirs',nl:'het huiswerk'},{fr:'la note',nl:'het cijfer'}
+  ]},
+  {id:'familie', label:'Familie', icon:'👪', words:[
+    {fr:'le pere',nl:'de vader'},{fr:'la mere',nl:'de moeder'},{fr:'le frere',nl:'de broer'},
+    {fr:'la soeur',nl:'de zus'},{fr:'les parents',nl:'de ouders'},{fr:'le grand-pere',nl:'de opa'},
+    {fr:'la grand-mere',nl:'de oma'},{fr:'loncle',nl:'de oom'},{fr:'la tante',nl:'de tante'},
+    {fr:'le fils',nl:'de zoon'},{fr:'la fille',nl:'de dochter'}
+  ]},
+  {id:'voetbal', label:'Voetbal Frans', icon:'⚽', words:[
+    {fr:'le football',nl:'het voetbal'},{fr:'le ballon',nl:'de bal'},{fr:'le but',nl:'het doel'},
+    {fr:'le joueur',nl:'de speler'},{fr:'lequipe',nl:'het team'},{fr:'le match',nl:'de wedstrijd'},
+    {fr:'le stade',nl:'het stadion'},{fr:'larbitre',nl:'de scheidsrechter'},
+    {fr:'marquer un but',nl:'een goal scoren'},{fr:'le gardien',nl:'de keeper'},
+    {fr:'le championnat',nl:'het kampioenschap'},{fr:'gagner',nl:'winnen'},
+    {fr:'perdre',nl:'verliezen'},{fr:'lentraineur',nl:'de trainer'}
+  ]}
+];
+
+var LEVELS = [
+  {n:'Pupil',xp:0},{n:'Reservespeler',xp:100},{n:'Basisspeler',xp:250},
+  {n:'Aanvoerder',xp:500},{n:'Topscorer',xp:800},{n:'Kampioen',xp:1200}
+];
+
+var xp = 0;
+var pendingWords = null;
+var currentWords = [];
+var qIndex = 0, qScore = 0, qWrong = [], qMode = '';
+var lastWords = [], lastMode = '';
+var quizClub = null;
+
+function getLvl(x) {
+  var l = 0;
+  for (var i = 0; i < LEVELS.length; i++) { if (x >= LEVELS[i].xp) l = i; }
+  return l;
+}
+
+function updateHUD() {
+  var lvl = getLvl(xp);
+  document.getElementById('h-levelname').textContent = LEVELS[lvl].n;
+  document.getElementById('h-xp').textContent = xp;
+  document.getElementById('h-crest').textContent = 'LVL ' + (lvl + 1);
+  var next = LEVELS[Math.min(lvl+1, LEVELS.length-1)].xp;
+  var prev = LEVELS[lvl].xp;
+  var pct = lvl >= LEVELS.length-1 ? 100 : Math.round(((xp-prev)/(next-prev))*100);
+  document.getElementById('h-xp-label').textContent = 'Naar niveau '+(lvl+2)+': '+(xp-prev)+' / '+(next-prev)+' XP';
+  document.getElementById('h-xpbar').style.width = pct + '%';
+  renderClubs();
+  renderCats();
+}
+
+function renderClubs() {
+  var h = '';
+  for (var i = 0; i < CLUBS.length; i++) {
+    var c = CLUBS[i];
+    h += '<div class="club-badge"><div class="club-crest" style="background:'+c.bg+';color:'+c.fg+';border-color:'+c.bc+';">'+c.short+'</div><div class="club-name">'+c.name+'</div></div>';
+  }
+  document.getElementById('club-strip').innerHTML = h;
+}
+
+function renderCats() {
+  var h = '';
+  for (var i = 0; i < CATS.length; i++) {
+    var c = CATS[i];
+    h += '<button class="cat-btn" data-catidx="'+i+'">' +
+      '<span style="font-size:20px;">'+c.icon+'</span>' +
+      '<div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+c.label+'</div><div style="font-size:12px;color:#6b7280;">'+c.words.length+' woorden</div></div>' +
+      '<span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';
+  }
+  document.getElementById('cat-list').innerHTML = h;
+  var btns = document.querySelectorAll('.cat-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function() {
+      selectCat(parseInt(this.getAttribute('data-catidx')));
+    });
+  }
+}
+
+function selectCat(idx) {
+  pendingWords = CATS[idx].words;
+  document.getElementById('mode-title').textContent = CATS[idx].label;
+  document.getElementById('mode-sub').textContent = CATS[idx].words.length + ' woorden';
+  renderModeList();
+  goTo('s-mode');
+}
+
+function renderModeList() {
+  var modes = [
+    {key:'mc-fr2nl', icon:'🇫🇷', label:'Frans naar Nederlands', desc:'Meerkeuze — kies de vertaling'},
+    {key:'mc-nl2fr', icon:'🇳🇱', label:'Nederlands naar Frans',  desc:'Meerkeuze — kies het Franse woord'},
+    {key:'type-nl2fr',icon:'✏️', label:'Typ het Frans',          desc:'Schrijfoefening — type zelf het woord'}
+  ];
+  var h = '';
+  for (var i = 0; i < modes.length; i++) {
+    h += '<button class="mode-btn" data-mode="'+modes[i].key+'">' +
+      '<span style="font-size:20px;">'+modes[i].icon+'</span>' +
+      '<div style="flex:1;text-align:left;"><div style="font-size:15px;font-weight:700;color:#111;">'+modes[i].label+'</div><div style="font-size:12px;color:#6b7280;">'+modes[i].desc+'</div></div>' +
+      '<span style="color:#9ca3af;font-size:20px;">&#8250;</span></button>';
+  }
+  document.getElementById('mode-list').innerHTML = h;
+  var btns = document.querySelectorAll('.mode-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function() {
+      startQuiz(this.getAttribute('data-mode'));
+    });
+  }
+}
+
+function goTo(id) {
+  var ss = document.querySelectorAll('.screen');
+  for (var i = 0; i < ss.length; i++) ss[i].classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 's-home') updateHUD();
+}
+
+function shuffle(a) {
+  var arr = a.slice();
+  for (var i = arr.length-1; i > 0; i--) {
+    var j = Math.floor(Math.random()*(i+1));
+    var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+
+function startQuiz(mode) {
+  lastWords = pendingWords;
+  lastMode = mode;
+  currentWords = shuffle(pendingWords).slice(0, Math.min(pendingWords.length, 15));
+  qIndex = 0; qScore = 0; qWrong = []; qMode = mode;
+  quizClub = CLUBS[Math.floor(Math.random()*CLUBS.length)];
+  goTo('s-quiz');
+  loadQ();
+}
+
+function loadQ() {
+  var total = currentWords.length;
+  document.getElementById('q-counter').textContent = (qIndex+1)+' / '+total;
+  document.getElementById('q-pbar').style.width = Math.round((qIndex/total)*100)+'%';
+  document.getElementById('q-score-badge').textContent = qScore+' pt';
+  document.getElementById('q-fb').innerHTML = '';
+  document.getElementById('q-next-btn').style.display = 'none';
+
+  var c = quizClub;
+  var banner = document.getElementById('q-club-banner');
+  banner.style.cssText = 'background:'+c.bg+';border:2px solid '+c.bc+';border-radius:12px;padding:9px 14px;margin-bottom:.75rem;display:flex;align-items:center;gap:10px;';
+  banner.innerHTML = '<div style="width:34px;height:34px;border-radius:50%;border:2px solid '+c.bc+';display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:'+c.fg+';flex-shrink:0;">'+c.short+'</div>' +
+    '<div style="font-size:13px;font-weight:600;color:'+c.fg+';">Je speelt voor '+c.name+'</div>';
+
+  var w = currentWords[qIndex];
+  var isType = (qMode === 'type-nl2fr');
+  var isFr2nl = (qMode === 'mc-fr2nl');
+
+  if (isType) {
+    document.getElementById('q-direction').textContent = 'Hoe zeg je dit in het Frans?';
+    document.getElementById('q-word').textContent = w.nl;
+    document.getElementById('q-mc-area').style.display = 'none';
+    document.getElementById('q-type-area').style.display = 'block';
+    document.getElementById('q-input').value = '';
+    document.getElementById('q-input').disabled = false;
+    document.getElementById('q-type-fb').textContent = '';
+    document.getElementById('q-type-fb').style.color = '#111';
+    document.getElementById('q-type-next').style.display = 'none';
+    document.getElementById('q-check-btn').style.display = 'block';
+    setTimeout(function(){ document.getElementById('q-input').focus(); }, 80);
+  } else {
+    document.getElementById('q-direction').textContent = isFr2nl ? 'Wat betekent dit Franse woord?' : 'Hoe zeg je dit in het Frans?';
+    document.getElementById('q-word').textContent = isFr2nl ? w.fr : w.nl;
+    document.getElementById('q-type-area').style.display = 'none';
+    document.getElementById('q-mc-area').style.display = 'block';
+
+    var allW = [];
+    for (var i = 0; i < CATS.length; i++) allW = allW.concat(CATS[i].words);
+    var correctVal = isFr2nl ? w.nl : w.fr;
+    var pool = [];
+    for (var i = 0; i < allW.length; i++) {
+      var v = isFr2nl ? allW[i].nl : allW[i].fr;
+      if (v !== correctVal) pool.push(allW[i]);
+    }
+    var opts = shuffle([w].concat(shuffle(pool).slice(0,3)));
+
+    var h = '';
+    for (var i = 0; i < opts.length; i++) {
+      var lbl = isFr2nl ? opts[i].nl : opts[i].fr;
+      h += '<button class="mc-opt" data-lbl="'+lbl.replace(/"/g,'&quot;')+'" data-correct="'+(lbl===correctVal ? '1':'0')+'" data-correctval="'+correctVal.replace(/"/g,'&quot;')+'">'+lbl+'</button>';
+    }
+    document.getElementById('q-mc-area').innerHTML = h;
+
+    var mcbtns = document.querySelectorAll('.mc-opt');
+    for (var i = 0; i < mcbtns.length; i++) {
+      mcbtns[i].addEventListener('click', function() {
+        checkMC(this);
+      });
+    }
+  }
+}
+
+function checkMC(btn) {
+  var isCorrect = btn.getAttribute('data-correct') === '1';
+  var correctVal = btn.getAttribute('data-correctval');
+  var btns = document.querySelectorAll('.mc-opt');
+  for (var i = 0; i < btns.length; i++) btns[i].disabled = true;
+  var fb = document.getElementById('q-fb');
+  if (isCorrect) {
+    btn.classList.add('correct');
+    fb.innerHTML = '<div class="fb-box fb-correct">⚽ Goal! Goed antwoord!</div>';
+    qScore++;
+  } else {
+    btn.classList.add('wrong');
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].getAttribute('data-correct') === '1') btns[i].classList.add('correct');
+    }
+    fb.innerHTML = '<div class="fb-box fb-wrong">❌ Het goede antwoord is: <strong>'+correctVal+'</strong></div>';
+    qWrong.push(currentWords[qIndex]);
+  }
+  document.getElementById('q-next-btn').style.display = 'block';
+}
+
+function checkType() {
+  var val = document.getElementById('q-input').value.trim().toLowerCase();
+  if (!val) return;
+  var correct = currentWords[qIndex].fr.toLowerCase();
+  document.getElementById('q-input').disabled = true;
+  var fb = document.getElementById('q-type-fb');
+  if (val === correct) {
+    fb.textContent = '⚽ Perfect Frans!'; fb.style.color = '#166534'; qScore++;
+  } else if (lev(val,correct) === 1) {
+    fb.textContent = 'Bijna! Het is: '+currentWords[qIndex].fr; fb.style.color = '#92400e';
+    qWrong.push(currentWords[qIndex]);
+  } else {
+    fb.textContent = 'Fout. Het is: '+currentWords[qIndex].fr; fb.style.color = '#991b1b';
+    qWrong.push(currentWords[qIndex]);
+  }
+  document.getElementById('q-check-btn').style.display = 'none';
+  document.getElementById('q-type-next').style.display = 'block';
+}
+
+function lev(a,b) {
+  var m=a.length,n=b.length,d=[];
+  for (var i=0;i<=m;i++){d[i]=[];d[i][0]=i;}
+  for (var j=0;j<=n;j++) d[0][j]=j;
+  for (var i=1;i<=m;i++) for (var j=1;j<=n;j++)
+    d[i][j]=a[i-1]===b[j-1]?d[i-1][j-1]:1+Math.min(d[i-1][j],d[i][j-1],d[i-1][j-1]);
+  return d[m][n];
+}
+
+function nextQ() {
+  qIndex++;
+  if (qIndex >= currentWords.length) { showResult(); return; }
+  loadQ();
+}
+
+function showResult() {
+  var total = currentWords.length;
+  var pct = Math.round((qScore/total)*100);
+  var earned = qScore*10 + (pct>=80?50:pct>=60?20:0);
+  xp += earned;
+  var c = quizClub;
+  document.getElementById('r-club-header').style.cssText =
+    'background:'+c.bg+';border:2px solid '+c.bc+';border-radius:14px;padding:1.25rem;margin-bottom:.875rem;text-align:center;';
+  document.getElementById('r-club-header').innerHTML =
+    '<div style="width:52px;height:52px;border-radius:50%;border:2px solid '+c.bc+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:'+c.fg+';margin:0 auto 10px;">'+c.short+'</div>' +
+    '<div style="font-size:20px;font-weight:700;color:'+c.fg+';">'+(pct>=80?'🏆 Kampioen!':pct>=60?'⭐ Goed gespeeld!':'💪 Blijven trainen!')+'</div>' +
+    '<div style="font-size:13px;opacity:.75;margin-top:4px;color:'+c.fg+';">'+c.name+' · '+qScore+'/'+total+' · +'+earned+' XP</div>';
+  document.getElementById('r-good').textContent = qScore;
+  document.getElementById('r-wrong').textContent = total-qScore;
+  document.getElementById('r-xp').textContent = earned;
+  var wl = document.getElementById('r-wrong-list');
+  if (qWrong.length > 0) {
+    wl.style.display = 'block';
+    var wh = '<div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;">📚 Nog leren:</div>';
+    for (var i=0;i<qWrong.length;i++)
+      wh += '<div class="wrong-item"><span>'+qWrong[i].fr+'</span><span style="color:#6b7280;">'+qWrong[i].nl+'</span></div>';
+    wl.innerHTML = wh;
+  } else { wl.style.display = 'none'; }
+  goTo('s-result');
+}
+
+// Wire up all static buttons via addEventListener (no inline onclick)
+document.getElementById('btn-mix').addEventListener('click', function() {
+  var all = [];
+  for (var i = 0; i < CATS.length; i++) all = all.concat(CATS[i].words);
+  pendingWords = all;
+  document.getElementById('mode-title').textContent = 'Alles door elkaar';
+  document.getElementById('mode-sub').textContent = all.length + ' woorden';
+  renderModeList();
+  goTo('s-mode');
+});
+document.getElementById('btn-back-mode').addEventListener('click', function() { goTo('s-home'); });
+document.getElementById('btn-back-quiz').addEventListener('click', function() { goTo('s-home'); });
+document.getElementById('q-next-btn').addEventListener('click', nextQ);
+document.getElementById('q-check-btn').addEventListener('click', checkType);
+document.getElementById('q-type-next').addEventListener('click', nextQ);
+document.getElementById('btn-replay').addEventListener('click', function() {
+  pendingWords = lastWords;
+  startQuiz(lastMode);
+});
+document.getElementById('btn-home-result').addEventListener('click', function() { goTo('s-home'); });
+
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter') return;
+  if (!document.getElementById('s-quiz').classList.contains('active')) return;
+  var cb = document.getElementById('q-check-btn');
+  var tn = document.getElementById('q-type-next');
+  var nb = document.getElementById('q-next-btn');
+  if (cb && cb.style.display !== 'none') checkType();
+  else if (tn && tn.style.display !== 'none') nextQ();
+  else if (nb && nb.style.display !== 'none') nextQ();
+});
+
+updateHUD();
+</script>
+</body>
+</html>
